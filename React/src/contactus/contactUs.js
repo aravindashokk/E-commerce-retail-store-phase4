@@ -18,7 +18,7 @@ function ContactUs() {
                     page/content </p>
                 </div>  
                 <div className="form">
-                    <form className="d-flex flex-direction-column w-100" action="admin@instawash.com" method="post" enctype="text/plain"> 
+                    <form className="d-flex flex-direction-column w-100" action="admin@Mercado Escolar.com" method="post" enctype="text/plain"> 
                         <div className="d-flex flex-direction-row mediaPhone">
                             <input type="text" id="fname" name="fname" placeholder="First Name" required/>
                              <input type="text" id="lname" name="lname" placeholder="Last Name" required/>    

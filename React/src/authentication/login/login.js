@@ -46,12 +46,12 @@ function Login() {
         event.preventDefault();
         var emailValue = document.getElementById('email').value;
         if (emailValue) {
-            if (emailValue === 'admin@instawash.com') {
+            if (emailValue === 'admin@Mercado Escolar.com') {
                  window.location = '/admin'
             }
-            else if (emailValue === 'manager@instawash.com') {
+            else if (emailValue === 'manager@Mercado Escolar.com') {
                  window.location = '/manager'
-            } else if (emailValue === 'user@instawash.com') {
+            } else if (emailValue === 'user@Mercado Escolar.com') {
                 window.location = '/user'
             } else {
                 window.location = '/visitor'

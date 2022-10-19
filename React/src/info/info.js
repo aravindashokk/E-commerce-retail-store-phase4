@@ -11,7 +11,7 @@ function HeaderInfo() {
                 <div className="d-flex flex-direction-row justify-around info-link">
                     <p>
                         <span className="font-oswald text-header"> We Wash, Dry and Iron your clothes</span><br /><br />
-                        <span className="about-description">Care and quality are the core values of InstaWash dry cleaning and laundry
+                        <span className="about-description">Care and quality are the core values of Mercado Escolar dry cleaning and laundry
                             service.<br />
                             Our mission is to provide consistent, quality clothing care with a level of service that exceeds your
                             expectations</span><br />

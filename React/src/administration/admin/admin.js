@@ -45,7 +45,7 @@ function Admin () {
     return (
       <section className='administration-bg'>
       <div className="container" id="heading-container">
-            <div className="font-oswald heading"> Instawash Admin </div>
+            <div className="font-oswald heading"> Mercado Escolar Admin </div>
         </div>
        {/* Admin page graph ans stats */}
         <div id="graph-view" className="graph-view d-flex flex-direction-column w-100">

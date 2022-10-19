@@ -17,7 +17,7 @@ function Header() {
     <Router>
     {/* navigation bar and links */}
     <header className="d-flex justify-between nav-header">
-    <div className="header-title d-flex"><Link className="logo font-oswald" to="/">InstaWash</Link></div>
+    <div className="header-title d-flex"><Link className="logo font-oswald" to="/">Mercado Escolar</Link></div>
     <nav className="navbar">
       <ul className="d-flex justify-around flex-direction-row">
         <li className="nav-item active" id="homeTab">
@@ -49,7 +49,7 @@ function Header() {
   {/* side menu navigation for responsiveness  */}
   <header className="d-flex justify-between menu-header" style={{display: 'none'}}>
     <div className="header-title d-flex justify-between"><img alt='hamburger menu icon' className="logo font-oswald cursor-pointer" src= {hamBurger} height="28px" width="28px" onClick={showSideNav}/> 
-      <div className="header-title d-flex"><a className="logo font-oswald" href="./index.html">InstaWash</a></div></div>
+      <div className="header-title d-flex"><a className="logo font-oswald" href="./index.html">Mercado Escolar</a></div></div>
     <div className="side-bar-navigation fade" id="side-bar-navigation">
       <ul>
         <li><Link to="/">Home</Link></li>
