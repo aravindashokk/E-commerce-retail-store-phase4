@@ -23,7 +23,7 @@ return(
         <li className="footer-link-item"><Link to='/'>Terms</Link></li>
         <li className="footer-link-item"><Link to='/'>Privacy Policy</Link></li>
       </ul>
-      <p className="copyright d-flex justify-center">Mercado Escolar © 2021. All Rights Reserved.</p>
+      <p className="copyright d-flex justify-center">Mercado Escolar © 2022. All Rights Reserved.</p>
     </footer>
     </Router>);
 }

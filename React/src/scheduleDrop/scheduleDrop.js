@@ -19,7 +19,7 @@ function ScheduleDrop() {
                             <div className="d-flex flexdirection-row justify-center schedule-dropoff media">
                                 <div className="schedule d-flex align-items-center">Please Select a Drop Off Time</div>
                                 <div className="d-flex justify-between">
-                                    <input type="date" id="start" name="start" value="2021-10-01" min="2021-10-01" max="2030-12-31"
+                                    <input type="date" id="start" name="start" value="2022-10-01" min="2022-10-01" max="2030-12-31"
                                         className="dayTime" required />
                                     <input type="time" id="appt" name="appt" min="09:00" max="18:00" className="dayTime" required />
                                 </div>
