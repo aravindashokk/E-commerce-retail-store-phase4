@@ -46,12 +46,12 @@ function Login() {
         event.preventDefault();
         var emailValue = document.getElementById('email').value;
         if (emailValue) {
-            if (emailValue === 'admin@Mercado Escolar.com') {
+            if (emailValue === 'admin@MercadoEscolar.com') {
                  window.location = '/admin'
             }
-            else if (emailValue === 'manager@Mercado Escolar.com') {
+            else if (emailValue === 'manager@MercadoEscolar.com') {
                  window.location = '/manager'
-            } else if (emailValue === 'user@Mercado Escolar.com') {
+            } else if (emailValue === 'user@MercadoEscolar.com') {
                 window.location = '/user'
             } else {
                 window.location = '/visitor'
