@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import './contactUs.css'
+import Footer from "../footer/Footer";
 // import '../../../Static website/src/themes/dark.css'
 function ContactUs() {
     useEffect(() => {
@@ -38,6 +39,7 @@ function ContactUs() {
                 </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     
     );

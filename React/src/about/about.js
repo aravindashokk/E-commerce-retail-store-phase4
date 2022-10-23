@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import './about.css'
+import Footer from "../footer/Footer";
 function About() {
     useEffect(() => {
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
@@ -32,6 +33,7 @@ function About() {
                     </p>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
