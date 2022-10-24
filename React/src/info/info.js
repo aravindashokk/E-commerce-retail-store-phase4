@@ -10,11 +10,10 @@ function HeaderInfo() {
             <section className='info-section-container'>
                 <div className="d-flex flex-direction-row justify-around info-link">
                     <p>
-                        <span className="font-oswald text-header"> We Wash, Dry and Iron your clothes</span><br /><br />
-                        <span className="about-description">Care and quality are the core values of Mercado Escolar dry cleaning and laundry
-                            service.<br />
-                            Our mission is to provide consistent, quality clothing care with a level of service that exceeds your
-                            expectations</span><br />
+                        <span className="font-oswald text-header"> We help you sell, buy products and also post advertisements</span><br /><br />
+                        <span className="about-description">Ease and quality are the core values of Mercado Escolar .<br />
+                        Our mission is to provide convinence, effortless shopping experience with a level of service that exceeds your
+          expectations</span><br />
                         <br /><Link to="/about" className="services-link">Read more about us <img className="arrow-right" alt='right arrow'
                             src={arrowRight} /></Link>
                     </p>
@@ -25,7 +24,7 @@ function HeaderInfo() {
                     <img src={pickupDelivery} alt='pickup and delivery'/>
                     <p>
                         <span className="font-oswald text-header">
-                            And the cherry on top <br /> We do Pickup / Delivery </span><br /><br />
+                            And the cherry on top <br /> You can view posts, products and advertisements with one click </span><br /><br />
                         <Link className="services-link" to="/services">Explore our Services <img className="arrow-right" alt='right arrow'
                             src={arrowRight} /></Link>
                     </p>

@@ -11,17 +11,17 @@ return(
     <Router>
     <footer className="w-100 d-flex flex-direction-column align-items-center">
       <div className="social-media-links d-flex flex-direction-row justify-around">
-        <Link to='/'><img src= {instagram} alt='logo-instagram'/></Link>
-        <Link to='/'><img src= {facebook} alt='logo-facebook'/></Link>
-        <Link to='/'><img src= {twitter} alt='logo-twitter'/></Link>
-        <Link to='/'><img src= {yelp} alt='logo-yelp'/></Link>
+        <a href = 'https://www.instagram.com'><img src= {instagram} alt='logo-instagram'/></a>
+        <a href = 'https://www.fb.com'><img src= {facebook} alt='logo-facebook'/></a>
+        <a href = 'https://www.twitter.com'><img src= {twitter} alt='logo-twitter'/></a>
+        <a href = 'https://www.yelp.com'><img src= {yelp} alt='logo-yelp'/></a>
       </div>
       <ul className="footer-links d-flex flex-direction-row justify-around">
-        <li className="footer-link-item"><Link to='/'>Home</Link></li>
-        <li className="footer-link-item"><Link to='/'>Services</Link></li>
-        <li className="footer-link-item"><Link to='/'>About</Link></li>
-        <li className="footer-link-item"><Link to='/'>Terms</Link></li>
-        <li className="footer-link-item"><Link to='/'>Privacy Policy</Link></li>
+        <li className="footer-link-item"><a href='/'>Home</a></li>
+        <li className="footer-link-item"><a href='/services'>Services</a></li>
+        <li className="footer-link-item"><a href='/about'>About</a></li>
+        <li className="footer-link-item"><a href='/'>Terms</a></li>
+        <li className="footer-link-item"><a href='/'>Privacy Policy</a></li>
       </ul>
       <p className="copyright d-flex justify-center">Mercado Escolar © 2022. All Rights Reserved.</p>
     </footer>

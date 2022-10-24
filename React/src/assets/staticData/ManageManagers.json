@@ -3,7 +3,7 @@
         {
             "id":10001,
             "name":"Tom David",
-            "email":"tom.davis@Mercado Escolar.com",
+            "email":"tom.davis@mercadoescolar.com",
             "Address":"728 Beaver Ridge Ave.Tallahassee, FL 32303",
             "PhoneNo":5907863456,
             "Gender":"M",
@@ -13,7 +13,7 @@
         {
             "id":10002,
             "name":"Harvey",
-            "email":"harvey@Mercado Escolar.com",
+            "email":"harvey@mercadoescolar.com",
             "Address":"835 Highland Street East Lansing, MI 48823",
             "PhoneNo":9806573245,
             "Gender":"M",
@@ -23,7 +23,7 @@
         {
             "id":10003,
             "name":"Sharon Carter",
-            "email":"sharon@Mercado Escolar.com",
+            "email":"sharon@mercadoescolar.com",
             "Address":"8123 Wall St.Sunnyside, NY 11104",
             "PhoneNo":9805678943,
             "Gender":"F",
