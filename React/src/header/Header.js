@@ -12,6 +12,7 @@ import About from '../about/about';
 import Service from '../services/service';
 import User from '../user/user';
 import Visitor from '../visitor/visitor';
+import Payment from '../payment/payment';
 function Header() {
   return (
     <Router>
@@ -38,10 +39,16 @@ function Header() {
         <li className="nav-item" id="authenticationTab">
           <Link className="nav-Link" to="/authentication">Login/Register</Link>
         </li>
-        <form className="form-inline search-control  d-flex align-items-center">
-          <input className="form-control" type="search" placeholder="Search" aria-label="Search"></input>
-          <button className="btn" type="submit">Search</button>
-        </form>
+        <li>
+          <div id="tray">
+            <div className="count">
+            
+            </div>
+            <Link className="nav-Link" to="/Payment">
+              <i className="fa fa-shopping-basket fa-2x" aria-hidden="true"></i>
+            </Link>
+           </div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -72,6 +79,7 @@ function Header() {
       <Route exact path='/manager'><Manager/></Route>
       <Route exact path='/user'><User/></Route>
       <Route exact path='/visitor'><Visitor/></Route>
+      <Route exact path='/payment'><Payment/></Route>
   </Switch>
   </Router>
   );
