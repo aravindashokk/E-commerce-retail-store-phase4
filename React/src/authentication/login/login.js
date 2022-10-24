@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import login from '../../assets/images/login.png'
+import Forgotpassword from "../forgotpassword/forgotpassword";
 import Registration from "../registration/registration";
 function Login() {
     useEffect(() => {
@@ -11,6 +12,7 @@ function Login() {
         <Router>
             <Switch>
                 <Route exact path='/registration'><Registration /></Route>
+                <Route exact path='/forgotpassword'><Forgotpassword/></Route>
                 <Route exact path='/authentication'>
                     {/* login section */}
                     <div className="d-flex flex-direction-row justify-around login-section fade">
@@ -29,6 +31,8 @@ function Login() {
                                 <div className="d-flex flex-direction-column align-items-center">
                                     <button className="btn login-btn" type="submit">Sign in</button>
                                     <br />
+                                    <p><Link className='link-style'
+                                        to="/Forgotpassword">Forgot Password?</Link></p>
                                     <p>Don't have an account yet? <Link className='link-style'
                                         to="/registration">Register</Link> here</p>
                                 </div>

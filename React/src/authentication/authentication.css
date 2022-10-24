@@ -36,10 +36,11 @@ body {
     background-attachment: fixed;
   }
   
-  /* login and registration section and container styles */
+  /* login, registration and forgot password section and container styles */
   
   .login-section,
-  .registration-section {
+  .registration-section,
+  .forgotPassword-section {
     align-items: center;
     height: calc(100vh - 85px);
   }
@@ -53,12 +54,21 @@ body {
     color: var(--primary-label-2) !important;
   }
   
+  .forgotPassword-container {
+    border-radius: 5px;
+    min-height: 40%;
+    box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.4);
+    background-color: var(--color-light);
+    color: var(--primary-label-2) !important;
+  }
+
   .registration-container {
     padding-bottom: 25px;
   }
   
   .login-container .login-header,
-  .registration-container .registration-header {
+  .registration-container .registration-header,
+  .forgotPassword-container .forgotPassword-header {
     font-size: 36px;
     font-weight: 400;
     margin-top: 45px;
@@ -66,7 +76,8 @@ body {
   }
   
   .login-container input,
-  .registration-container input {
+  .registration-container input,
+  .forgotPassword-container input {
     width: 300px;
     height: 35px;
     margin: 20px 45px;
@@ -78,7 +89,8 @@ body {
   }
   
   .login-container input:focus-visible,
-  .registration-container input:focus-visible {
+  .registration-container input:focus-visible,
+  .forgotPassword-container input:focus-visible {
     outline: none;
   }
   
@@ -96,7 +108,8 @@ body {
   login and register button styles */
   
   .login-btn,
-  .register-btn {
+  .register-btn,
+  .continue-btn {
     width: 75%;
     height: 40px;
     margin-top: 20px;
@@ -125,6 +138,10 @@ body {
   
   
   
+    .forgotPassword-section{
+      height: 1000px;
+    }
+    
     .registration-section{
       justify-content: flex-start !important;
       flex-direction: column  !important;
