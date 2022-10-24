@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
-import laundryWoman from '../assets/images/laundry-women.png';
-import arrowRight from '../assets/images/arrow-right-white.png';
-import pickupDelivery from '../assets/images/pickup-delivery.png';
+import laundryWoman from '../assets/images/2.png';
+import arrowRight from '../assets/images/1.png';
+import pickupDelivery from '../assets/images/Advertise.jpg';
 function HeaderInfo() {
     return (
         <Router>
@@ -23,8 +23,8 @@ function HeaderInfo() {
                 <div className="d-flex flex-direction-row justify-around info-link">
                     <img src={pickupDelivery} alt='pickup and delivery'/>
                     <p>
-                        <span className="font-oswald text-header">
-                            And the cherry on top <br /> You can view posts, products and advertisements with one click </span><br /><br />
+                        <span className="font-oswald text-header">   And the cherry on top 
+                         <span className="about-description"></span>  You can view posts, products and advertisements with one click </span><br /><br />
                         <Link className="services-link" to="/services">Explore our Services <img className="arrow-right" alt='right arrow'
                             src={arrowRight} /></Link>
                     </p>
