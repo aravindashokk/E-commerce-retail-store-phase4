@@ -19,23 +19,24 @@ function ContactUs() {
                     page/content </p>
                 </div>  
                 <div className="form">
-                    <form className="d-flex flex-direction-column w-100" action="admin@Mercado Escolar.com" method="post" enctype="text/plain"> 
-                        <div className="d-flex flex-direction-row mediaPhone">
-                            <input type="text" id="fname" name="fname" placeholder="First Name" required/>
-                             <input type="text" id="lname" name="lname" placeholder="Last Name" required/>    
+                    <form class="d-flex flex-direction-column w-100" action="admin@Mercado Escolar.com" method="post" enctype="text/plain">
+                        <div class="d-flex flex-direction-row mediaPhone">
+                            <input type="text" id="fname" name="fname" placeholder="Enter Full Name" required/>
                         </div>
-                        <div className="d-flex flex-direction-row mediaPhone">
-                            <input type="text" id="email" name="email" placeholder="E-mail" required/>
-                            <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" required/>
+                        <div class="d-flex flex-direction-row mediaPhone">
+                            <input type="text" id="email" name="email" placeholder="Enter Email" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
                         </div>
-                        <div className="d-flex flex-direction-row mediaPhone">
-                            <textarea id="query" className="font-roboto" name="query" placeholder="Enter your query" required></textarea>
+                        <div class="d-flex flex-direction-row mediaPhone">
+                            <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="Enter Phone Number" required/>
                         </div>
-                        <div className="d-flex flex-direction-row buttons mediaPhone">
-                            <button className="btn clear" type="reset">Clear</button>
-                            <button className="btn submit" type="submit">Submit</button>
+                        <div class="d-flex flex-direction-row mediaPhone">
+                        <textarea id="query" class="font-roboto" name="query" placeholder="Enter your query" required></textarea>
                         </div>
-                    </form>   
+                        <div class="d-flex flex-direction-row buttons mediaPhone">
+                        <button class="btn clear" type="reset">Clear</button>
+                        <button class="btn submit" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
                 </div>
             </div>
