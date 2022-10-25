@@ -1,9 +1,9 @@
 import {React} from "react";
 import specialOffer from '../assets/images/special-offer.png'
-import fivestars from '../assets/images/5stars.png'
-import fourstars from '../assets/images/4stars.png'
-import fourandhalfstars from '../assets/images/4andhalfstars.png'
-import threeandhalfstars from '../assets/images/3andhalfstars.png'
+import fivestars from '../assets/images/maverick-mentors.png'
+import fourstars from '../assets/images/uta-radio.png'
+import fourandhalfstars from '../assets/images/cse.jpg'
+import threeandhalfstars from '../assets/images/3.png'
 
 function Carousel() {
   var slideIndex = 1;
@@ -48,27 +48,27 @@ function showSlides(n) {
 
       <div className="slides fade w-100">
         <div className="carousel review-content d-flex justify-around">
-          <div className="font-oswald d-flex flex-direction-column justify-center">Pricing</div>
+          <div className="font-oswald d-flex flex-direction-column justify-center">Post an advertisement</div>
           <div className="font-oswald d-flex flex-direction-column justify-evenly price-listing font-roboto">
-            <span>Washing: &ensp; 2$ per pound</span>
-            <span>Drying: &ensp; 2$ per pound</span>
-            <span>Ironing: &ensp; 4$ per pound</span>
+            <span>Product advertisement: &ensp; 20$ per pound</span>
+            <span>Club advertisement: &ensp; 10$ per pound</span>
+            <span>Website advertisement: &ensp; 40$ per pound</span>
           </div>
           <div className="font-oswald d-flex flex-direction-column justify-evenly font-roboto">
-            <span>Pickup: &ensp; 1.75$</span>
-            <span>Delivery: &ensp; 1.75$</span>
-            <span>Late Services: &ensp; 15% additional cost</span>
+            <span>Offers advertisement: &ensp; 15$</span>
+            <span>Event advertisement: &ensp; 25$</span>
+            <span>Service advertisement: &ensp; 30$</span>
           </div>
         </div>
       </div>
 
       <div className="slides fade w-100">
         <div className="carousel review-content d-flex flex-direction-column">
-          <div className="font-oswald d-flex justify-center">Customer Reviews</div>
-          <div className="customer-review d-flex w-100"><span>Jacob<img src={fourstars} alt='fourstars'/></span>
-            <span>Alan<img src={fivestars} alt='fivestars'/></span></div>
-          <div className="customer-review d-flex w-100"><span>Maria<img src={fourandhalfstars} alt='four&halfstars'/></span>
-            <span>Diaz<img src={threeandhalfstars} alt='threeandhalfstars'/></span></div>
+          <div className="font-oswald d-flex justify-center">Join the club</div>
+          <div className="customer-review d-flex w-100"><span>Uta Radio<img src={fourstars} alt='fourstars'/></span>
+            <span>Maverick Mentors<img src={fivestars} alt='fivestars'/></span></div>
+          <div className="customer-review d-flex w-100"><span>cse dept<img src={fourandhalfstars} alt='four&halfstars'/></span>
+            <span>Uta student orgs<img src={threeandhalfstars} alt='threeandhalfstars'/></span></div>
         </div>
       </div>
 
