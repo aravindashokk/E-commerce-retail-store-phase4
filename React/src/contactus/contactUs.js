@@ -26,7 +26,7 @@ function ContactUs() {
                             <input type="text" id="fname" name="fname" placeholder="Enter Full Name" required/>
                         </div>
                         <div class="d-flex flex-direction-row mediaPhone">
-                            <input type="text" id="email" name="email" placeholder="Enter Email" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
+                            <input type="text" id="email" name="email" placeholder="Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                         </div>
                         <div class="d-flex flex-direction-row mediaPhone">
                             <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="Enter Phone Number" required/>
