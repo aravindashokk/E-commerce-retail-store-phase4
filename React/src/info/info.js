@@ -19,12 +19,11 @@ function HeaderInfo() {
                     </p>
                     <img src={laundryWoman} alt='laundry and woman' />
                 </div>
-                <hr className="page-break" />
                 <div className="d-flex flex-direction-row justify-around info-link">
                     <img src={pickupDelivery} alt='pickup and delivery'/>
                     <p>
-                        <span className="font-oswald text-header"> And the cherry on top.</span>
-                         <span className="about-description"> You can view posts, products and advertisements with one click </span><br /><br />
+                        <span className="font-oswald text-header"> And the cherry on top </span><br/>
+                        <span className="about-description"> You can view posts, products and advertisements with one click </span><br />
                         <Link className="services-link" to="/services">Explore our Services <img className="arrow-right" alt='right arrow'
                             src={arrowRight} /></Link>
                     </p>
