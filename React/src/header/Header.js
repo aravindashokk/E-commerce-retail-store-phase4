@@ -8,6 +8,7 @@ import Registration from '../authentication/registration/registration';
 import SuperAdmin from '../administration/superadmin/superadmin';
 import SchoolAdmin from '../administration/schooladmin/schooladmin';
 import BusinessOwner from '../administration/businessowner/businessowner';
+import Student from '../student/student';
 import ContactUs from  '../contactus/contactUs'
 import About from '../about/about';
 import Service from '../services/service';
@@ -79,6 +80,7 @@ function Header() {
       <Route exact path='/superadmin'><SuperAdmin/></Route>
       <Route exact path='/schooladmin'><SchoolAdmin/></Route>
       <Route exact path='/businessowner'><BusinessOwner/></Route>
+      <Route exact path='/student'><Student/></Route>
       <Route exact path='/user'><User/></Route>
       <Route exact path='/visitor'><Visitor/></Route>
       <Route exact path='/payment'><Payment/></Route>

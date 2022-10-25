@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import './payment.css'
+import radio from '../assets/images/radio.jpg';
 import Footer from "../footer/Footer";
 // import '../../../Static website/src/themes/dark.css'
 function Payment() {
@@ -83,7 +84,7 @@ function Payment() {
                         </div>
                         <div className="Cart-Items">
                             <div className="image-box">
-                            <img src="../../assets/images/radio.jpg" style={{height:'80px'}} />
+                            <img src={radio} style={{height:'80px'}} />
                             </div>
                             <div className="about">
                             <h1 className="title">Product 1</h1>
@@ -97,7 +98,7 @@ function Payment() {
                         </div>
                         <div className="Cart-Items">
                             <div className="image-box">
-                            <img src="../../assets/images/radio.jpg" style={{height:'80px'}} />
+                            <img src={radio} style={{height:'80px'}} />
                             </div>
                             <div className="about">
                             <h1 className="title">Product 2</h1>
