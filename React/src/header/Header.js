@@ -5,8 +5,9 @@ import Home from '../home/Home';
 import React, {useEffect} from 'react';
 import Authentication from '../authentication/authentication';
 import Registration from '../authentication/registration/registration';
-import Admin from '../administration/admin/admin';
-import Manager from '../administration/manager/manager';
+import SuperAdmin from '../administration/superadmin/superadmin';
+import SchoolAdmin from '../administration/schooladmin/schooladmin';
+import BusinessOwner from '../administration/businessowner/businessowner';
 import ContactUs from  '../contactus/contactUs'
 import About from '../about/about';
 import Service from '../services/service';
@@ -75,8 +76,9 @@ function Header() {
       <Route exact path='/contactus' component={ContactUs}></Route>
       <Route exact path='/authentication'><Authentication/></Route>
       <Route exact path='/registration'><Registration/></Route>
-      <Route exact path='/admin'><Admin/></Route>
-      <Route exact path='/manager'><Manager/></Route>
+      <Route exact path='/superadmin'><SuperAdmin/></Route>
+      <Route exact path='/schooladmin'><SchoolAdmin/></Route>
+      <Route exact path='/businessowner'><BusinessOwner/></Route>
       <Route exact path='/user'><User/></Route>
       <Route exact path='/visitor'><Visitor/></Route>
       <Route exact path='/payment'><Payment/></Route>

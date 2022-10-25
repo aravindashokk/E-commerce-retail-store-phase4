@@ -50,12 +50,14 @@ function Login() {
         event.preventDefault();
         var emailValue = document.getElementById('email').value;
         if (emailValue) {
-            if (emailValue === 'admin@mercadoescolar.com') {
-                 window.location = '/admin'
+            if (emailValue === 'sadmin@mercadoescolar.com') {
+                 window.location = '/superadmin'
             }
-            else if (emailValue === 'manager@mercadoescolar.com') {
-                 window.location = '/manager'
-            } else if (emailValue === 'user@mercadoescolar.com') {
+            else if (emailValue === 'schadmin@mercadoescolar.com') {
+                 window.location = '/schooladmin'
+            } else if (emailValue === 'busiown@mercadoescolar.com') {
+                window.location = '/businessowner'
+           }else if (emailValue === 'user@mercadoescolar.com') {
                 window.location = '/user'
             } else {
                 window.location = '/visitor'
