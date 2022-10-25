@@ -10,7 +10,7 @@ import { addEquipment } from '../administration';
 import { addOrder } from '../administration';
 import { addManager } from '../administration';
 import { populateTables } from "../administration";
-function Admin () {
+function SuperAdmin () {
     var slideIndex = 1;
     useEffect(() => {
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
@@ -99,11 +99,11 @@ function Admin () {
                 <div className="d-flex flex-direction-column align-items-start section-content"><span
                         className="font-oswald section-header">Manage Students</span>
                     <div className="table-container">
-                        <table id="order-table" className="material-table">
+                        <table id="student-table" className="material-table">
                             <tbody>
                                 <tr>
                                     <th>Student ID</th>
-                                    <th>Student Name#</th>
+                                    <th>Student Name</th>
                                     <th>School Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
@@ -173,7 +173,7 @@ function Admin () {
                                 <th>Post Name</th>
                                 <th>Posted By</th>
                                 <th>Posted Time</th>
-                                <th>Posted Description</th>
+                                <th>Post Description</th>
                                 <th className="text-align-center"><img className="cursor-pointer" onClick={addCustomer}
                                         title="Add Record" src={add}
                                         height="13px" width="13px" alt='add-record'/></th>
@@ -187,4 +187,4 @@ function Admin () {
         </section>
     );
 }
-export default Admin;
+export default SuperAdmin;
