@@ -1,5 +1,5 @@
 import React from "react";
-import laundry from '../assets/images/laundry.png'
+import laundry from '../assets/images/1.png'
 function HeaderDescription() {
   return (
     // header seaction describing Mercado Escolar 
