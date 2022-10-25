@@ -8,6 +8,8 @@ function Home() {
   useEffect(() => {
       document.getElementsByClassName('nav-item active')[0].classList.remove('active');
       document.getElementById('homeTab').classList.add('active');
+      document.getElementById('cart').style.display='none';
+
   });
   return (
     <section className='info-section-container '>

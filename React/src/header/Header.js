@@ -39,7 +39,7 @@ function Header() {
         <li className="nav-item" id="authenticationTab">
           <Link className="nav-Link" to="/authentication">Login/Register</Link>
         </li>
-        <li>
+        <li id="cart">
           <div id="tray">
             <div className="count">
             

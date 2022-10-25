@@ -11,6 +11,7 @@ function Service() {
     useEffect(() => {
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
         document.getElementById('servicesTab').classList.add('active');
+        document.getElementById('cart').style.display='none';
     });
     return (
         <div>

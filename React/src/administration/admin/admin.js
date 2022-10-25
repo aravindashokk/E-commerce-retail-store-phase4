@@ -15,7 +15,8 @@ function Admin () {
     useEffect(() => {
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
         document.getElementById('authenticationTab').classList.add('active');
-        document.getElementById('authenticationTab').childNodes[0].innerText = 'Admin';
+        document.getElementById('authenticationTab').childNodes[0].innerText = 'Super Admin';
+        document.getElementById('cart').style.display='none';
     });
     setTimeout(()=> {
         populateTables();
@@ -45,7 +46,7 @@ function Admin () {
     return (
       <section className='administration-bg'>
       <div className="container" id="heading-container">
-            <div className="font-oswald heading"> Mercado Escolar Admin </div>
+            <div className="font-oswald heading"> Mercado Escolar Super Admin </div>
         </div>
        {/* Admin page graph ans stats */}
         <div id="graph-view" className="graph-view d-flex flex-direction-column w-100">
@@ -94,18 +95,18 @@ function Admin () {
              {/* Horizontal row section containing multiple tables  */}
             <div className="d-flex flex-direction-row justify-around section-container">
 
-                 {/* Manage Order table  */}
+                 {/* Manage Student table  */}
                 <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Order</span>
+                        className="font-oswald section-header">Manage Students</span>
                     <div className="table-container">
                         <table id="order-table" className="material-table">
                             <tbody>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Order#</th>
-                                    <th>Customer Name</th>
+                                    <th>Student ID</th>
+                                    <th>Student Name#</th>
+                                    <th>School Name</th>
                                     <th>Phone</th>
-                                    <th>Type</th>
+                                    <th>Email</th>
                                     <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
                                             onClick={addOrder} src={add} height="13px"
                                             width="13px" alt='add records'/></th>
@@ -115,18 +116,18 @@ function Admin () {
                     </div>
                 </div>
 
-                 {/* Manage equipment table  */}
+                 {/* Manage School table  */}
                 <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Equipment</span>
+                        className="font-oswald section-header">Manage Schools</span>
                     <div className="table-container">
                         <table id="equipment-table" className="material-table">
                         <tbody>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Order#</th>
-                                <th>Customer</th>
+                                <th>School ID</th>
+                                <th>School Name</th>
+                                <th>Address</th>
+                                <th>Phone No</th>
+                                <th>Email</th>
                                 <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
                                         onClick={addEquipment} src={add} height="13px"
                                         width="13px" alt='add-record'/></th>
@@ -140,19 +141,18 @@ function Admin () {
              {/* Horizontal row section containing multiple tables  */}
             <div className="d-flex flex-direction-row justify-around section-container">
 
-                 {/* Manage Customers table  */}
+                 {/* Manage Business table  */}
                 <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Customers</span>
+                        className="font-oswald section-header">Manage Business</span>
                     <div className="table-container">
                         <table id="customer-table" className="material-table">
                             <tbody>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
+                                    <th>Business ID</th>
+                                    <th>Business Name</th>
+                                    <th>Business Owner</th>
                                     <th>Email</th>
                                     <th>Phone no</th>
-                                    <th>Gender</th>
                                     <th className="text-align-center"><img className="cursor-pointer" onClick={addCustomer}
                                             title="Add Record" src={add} height="13px"
                                             width="13px" alt='add-record'/></th>
@@ -162,50 +162,22 @@ function Admin () {
                     </div>
                 </div>
 
-                 {/* Manage Pickup/Delivery table  */}
+                 {/* Manage Posts  */}
                 <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Pickup / Delivery</span>
+                        className="font-oswald section-header">Manage Posts</span>
                     <div className="table-container">
                         <table id="delivery-table" className="material-table">
                         <tbody>
                             <tr>
-                                <th>#</th>
-                                <th>Order#</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Phone no</th>
-                                <th>Assigned to</th>
-                                <th>Service type</th>
-                                <th className="text-align-center"><img className="cursor-pointer" onClick={addDeliveries}
+                                <th>Post ID</th>
+                                <th>Post Name</th>
+                                <th>Posted By</th>
+                                <th>Posted Time</th>
+                                <th>Posted Description</th>
+                                <th className="text-align-center"><img className="cursor-pointer" onClick={addCustomer}
                                         title="Add Record" src={add}
                                         height="13px" width="13px" alt='add-record'/></th>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-             {/* Horizontal row section containing Manager table  */}
-            <div className="d-flex flex-direction-row justify-around section-container" id='manager-table-container'>
-                <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Managers</span>
-                    <div className="table-container">
-                        <table id="manager-table" className="material-table">
-                            <tbody>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Phone no</th>
-                                    <th>Gender</th>
-                                    <th>Position</th>
-                                    <th>Location</th>
-                                    <th className="text-align-center"><img className="cursor-pointer" onClick={addManager}
-                                            title="Add Record" src={add} height="13px"
-                                            width="13px" alt='add-record'/></th>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
