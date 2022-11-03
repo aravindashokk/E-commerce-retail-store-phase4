@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.3aad43d0.chunk.css",
-    "main.js": "/static/js/main.58936c04.chunk.js",
-    "main.js.map": "/static/js/main.58936c04.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.19cc1805.js",
-    "runtime-main.js.map": "/static/js/runtime-main.19cc1805.js.map",
+    "main.js": "/static/js/main.be2eaedd.chunk.js",
+    "main.js.map": "/static/js/main.be2eaedd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ed7c931d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ed7c931d.js.map",
     "static/js/2.0c8973b4.chunk.js": "/static/js/2.0c8973b4.chunk.js",
     "static/js/2.0c8973b4.chunk.js.map": "/static/js/2.0c8973b4.chunk.js.map",
-    "static/js/3.70ad33e0.chunk.js": "/static/js/3.70ad33e0.chunk.js",
-    "static/js/3.70ad33e0.chunk.js.map": "/static/js/3.70ad33e0.chunk.js.map",
+    "static/js/3.de96344a.chunk.js": "/static/js/3.de96344a.chunk.js",
+    "static/js/3.de96344a.chunk.js.map": "/static/js/3.de96344a.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.3aad43d0.chunk.css.map": "/static/css/main.3aad43d0.chunk.css.map",
     "static/js/2.0c8973b4.chunk.js.LICENSE.txt": "/static/js/2.0c8973b4.chunk.js.LICENSE.txt",
@@ -35,9 +35,9 @@
     "static/media/uta-radio.78dd4c68.png": "/static/media/uta-radio.78dd4c68.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.19cc1805.js",
+    "static/js/runtime-main.ed7c931d.js",
     "static/js/2.0c8973b4.chunk.js",
     "static/css/main.3aad43d0.chunk.css",
-    "static/js/main.58936c04.chunk.js"
+    "static/js/main.be2eaedd.chunk.js"
   ]
 }

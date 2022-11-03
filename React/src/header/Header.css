@@ -1,3 +1,26 @@
+#snackbar {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px;
+    background-color: rgb(154, 211, 122);
+    color: rgb(37, 37, 37); 
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+  }
+  #snackbar.danger{
+    background-color: rgb(214, 103, 103);
+    color: white;
+  }
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 #tray {

@@ -64,7 +64,7 @@ function SuperAdmin () {
                     <span className="font-roboto">13</span>
                 </div>
                 <div className="number-card font-oswald">
-                    <span>No of Equipments available:</span>
+                    <span>No of School Clients:</span>
                     <span className="font-roboto">45</span>
                 </div>
             </div>

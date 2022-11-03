@@ -1,9 +1,7 @@
 var students, orders, equipment, pickupdelivery, customer, tasks, employees, managers;
 export function populateTables() {
 
-     // fetch orders list
-     students = require('../assets/staticData/ManageStudents.json');
-     populateStudentList(students['Manage Students'])
+     
 
     // fetch orders list
             orders = require('../assets/staticData/ManageOrder.json');
@@ -39,28 +37,12 @@ export function populateTables() {
 }
 
 
-// populate order table
-function populateStudentList(students) {
-    debugger;
-    var orderTable = document.getElementById('student-table')?.childNodes[0];
-    if(orderTable) {
-        students.forEach(element => {
-        orderTable.innerHTML += `<tr id="${`order_` + element.No}">
-                <td>${element.No}</td>
-                <td>${element.OrderNo}</td>
-                <td>${element.CustomerName}</td>
-                <td>${element.Phone}</td>
-                <td>${element.Type}</td>
-                <td><span class="action-icons"><img src="../../assets/images/edit.png" onclick= "editOrder(${`order_` + element.No})" title="edit"> <img src="../../assets/images/delete.png" onclick="deleteRecord(order_${element.No})" title="delete"></span></td>
-            </tr>`;
-    });
-}
-}
+
 
 // populate order table
 function populateOrderList(orders) {
     debugger;
-    var orderTable = document.getElementById('order-table')?.childNodes[0];
+    var orderTable = document.getElementById('student-table')?.childNodes[0];
     if(orderTable) {
     orders.forEach(element => {
         orderTable.innerHTML += `<tr id="${`order_` + element.No}">
