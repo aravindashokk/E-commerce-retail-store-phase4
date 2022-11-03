@@ -56,7 +56,7 @@ function Login() {
                  window.location = '/schooladmin'
             } else if (emailValue === 'busiown@mercadoescolar.com') {
                 window.location = '/businessowner'
-           }else if (emailValue === 'student@mercadoescolar.com') {
+           }else if (emailValue === 'np') {
             window.location = '/student'
        }else if (emailValue === 'user@mercadoescolar.com') {
                 window.location = '/user'
