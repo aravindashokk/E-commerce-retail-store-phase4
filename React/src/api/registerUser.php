@@ -21,12 +21,14 @@ if(isset($postdata) && !empty($postdata)){
         http_response_code(401);
         return;
     }
+    $phone = $request->phone;
+    // echo $phone;
     $password = $request->password;
     $password_hash = password_hash($password,
     PASSWORD_DEFAULT, array('cost' => 9));
     $userType = $request->userType;
     $id = (int)((rand() * rand())/rand());
-    $sql = "INSERT INTO Customer (First_Name,Last_Name,Email,Password,User_Type,ID) VALUES ('$firstName','$lastName','$email','$password_hash','$userType',$id)";
+    $sql = "INSERT INTO Customer (First_Name,Last_Name,Email,Phone,Password,User_Type,ID) VALUES ('$firstName','$lastName','$email','$phone','$password_hash','$userType',$id)";
     $result = mysqli_query($db, $sql);
     if($result){
         $msg =  "

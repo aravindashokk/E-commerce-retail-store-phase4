@@ -4,7 +4,7 @@ import signup from '../../assets/images/signup.png'
 import Authentication from "../authentication";
 import axios from 'axios';
 function Registration() {
-    const initialState = { firstName: '', lastName: '', email: '', phone: '', password: '', confirmPassword: '', userType:'User' };
+    const initialState = { firstName: '', lastName: '', email: '', phone: '', password: '', confirmPassword: '', userType:'Student' };
     const [state, setState] = useState({});
     const [registrationInfo, setRegistrationInfo] = useState(initialState);
     function handleChange(event) {
@@ -36,7 +36,7 @@ function Registration() {
         }
         axios({
             method: 'post',
-            url: process.env.REACT_APP_API_PATH + '/registerUser.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/registerUser.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -88,7 +88,7 @@ function Registration() {
                                     onChange={handleChange} onInvalid={(event) => event.target.setCustomValidity('Please provide a valid email address')}
                                     onInput={(event) => event.target.setCustomValidity('')}
                                         value={registrationInfo['email']}  />
-                                    <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                    <input type="text" id="phone" name="phone" placeholder="1234567890" required pattern="[0-9]{10}"
                                     onChange={handleChange} onInvalid={(event) => event.target.setCustomValidity('Please provide a valid Phone Number')}
                                     onInput={(event) => event.target.setCustomValidity('')}
                                         value={registrationInfo['phone']}  />
@@ -96,7 +96,7 @@ function Registration() {
                                         <select name="userType" id="userType" className="user-select" value={registrationInfo['userType']} required onChange={handleChange}>
                                             <option value="Student">Student</option>
                                             <option value="BusinessOwner">Business Owner</option>
-                                            <option value="School Admin">School Admin</option>
+                                            <option value="SchoolAdmin">School Admin</option>
                                         </select>
                                         <label for="userType" className="user-label">Select User Type</label>
                                     </div>
