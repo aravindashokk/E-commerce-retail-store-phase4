@@ -32,26 +32,26 @@ if(isset($postdata) && !empty($postdata)){
     $result = mysqli_query($db, $sql);
     if($result){
         $msg =  "
-        <HTML><HEAD>Welcome to InstaWash</HEAD>
+        <HTML><HEAD>Welcome to Mercado Escolar</HEAD>
         <BODY>
         <p>
-        Hi $firstName, <br /> Welcome to InstaWash.<br /> You have been successfully registered to Instawash as a $userType. We hope you have the best of experience with us. Laundry has never been this easier.<br /> <br /> Thanks,<br />InstaWash Team.
+        Hi $firstName, <br /> Welcome to Mercado Escolar.<br /> You have been successfully registered to Instawash as a $userType. We hope you have the best of experience with us.<br /> <br /> Thanks,<br />Mercado Escolar Team.
         </p>
         </BODY>
         </HTML>";
-        $mail = new PHPMailer;
+        $mail = new PHPMailer(true);
         $mail->isSMTP();                                     
-        $mail->Host = 'smtp.sendgrid.net'; 
+        $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = True;                                    
-        $mail->SMTPSecure = 'TLS';    
-        $mail->Username = 'apikey';
-        $mail->Password = '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';                       
-        $mail->Port = 25;                                   
-        $mail->setFrom('nxs4184@mavs.uta.edu', 'Instawash Inc.');
+        $mail->SMTPSecure = 'ssl';    
+        $mail->Username = 'wdm12avnk@gmail.com';
+        $mail->Password = 'nhhxshwyaawcuydb';                       
+        $mail->Port = 465;                                   
+        $mail->setFrom('nxs4184@mavs.uta.edu', 'Mercado Escolar');
         $mail->addAddress($email);
         $mail->addReplyTo('nxs4184@mavs.uta.edu', 'Support');
         $mail->isHTML(true);                                 
-        $mail->Subject = 'Welcome to InstaWash';
+        $mail->Subject = 'Welcome to Mercado Escolar';
         $mail->Body    = $msg;
         $mail->AltBody = 'Please Upgrade Your Browser to view this email';
         if(!$mail->send()) {
