@@ -1,10 +1,11 @@
-import React from 'react'
+import axios from 'axios'
+import React, { Component } from 'react'
 import './joinClub.css'
 function JoinClub() {
     return(
         <div>
         <div id="subscribeService" className="info-content">
-      <div className="font-oswald d-flex flex-direction-row w-100  justify-center sideNavHeader"> Subscribe to a Service
+      <div className="font-oswald d-flex flex-direction-row w-100  justify-center sideNavHeader"> Join a Club
       </div>
       <div className="form">
         <form className="d-flex flex-direction-column w-100 align-items-center" action="#" method="post"
