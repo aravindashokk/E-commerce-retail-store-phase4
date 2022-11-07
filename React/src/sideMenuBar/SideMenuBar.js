@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import Chat from '../chat/chat';
-import JoinClub from '../joinClub/joinClub';
+import JoinClub from '../clubs/joinClub/joinClub';
 
 import PlaceOrder from '../placeorder/placeorder';
 import RegisterIncident from '../registerIncident/registerIncident';
