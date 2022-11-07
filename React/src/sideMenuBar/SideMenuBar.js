@@ -16,13 +16,16 @@ function SideMenuBar () {
                 <div className="sideNav">
                     <ul className="d-fle flex-direction-column space-between">
                         <li className="sideNavItem " id="order">
-                            <Link className="sideNav-link" name="place-order" to="/user">Place Order</Link>
+                            <Link className="sideNav-link" name="products" to="/user">Products</Link>
                         </li>
                         <li className="sideNavItem" id="subscribe" >
-                            <Link className="sideNav-link" name="subscribeService" to="/Subscribe">Subscribe to Service</Link>
+                            <Link className="sideNav-link" name="clubs" to="/Subscribe">Clubs</Link>
                         </li>
                         <li className="sideNavItem" id="register" >
-                            <Link className="sideNav-link" name="registerIncident" to="/Register">Register an Incident</Link>
+                            <Link className="sideNav-link" name="profile" to="/Register">My Profile</Link>
+                        </li>
+                        <li className="sideNavItem" id="register" >
+                            <Link className="sideNav-link" name="orders" to="/Register">My Orders</Link>
                         </li>
                         <li className="sideNavItem" id="chat">
                             <Link className="sideNav-link" name="chats" to="/Chat">Chat</Link>

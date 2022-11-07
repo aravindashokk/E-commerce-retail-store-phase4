@@ -10,9 +10,11 @@ import { addEquipment } from '../administration';
 import { addOrder } from '../administration';
 import { addManager } from '../administration';
 import { populateTables } from "../administration";
+import validateSession from "../../session/session";
 function SuperAdmin () {
     var slideIndex = 1;
     useEffect(() => {
+        validateSession('SuperAdmin');
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
         document.getElementById('authenticationTab').classList.add('active');
         document.getElementById('authenticationTab').childNodes[0].innerText = 'Super Admin';

@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import hamBurger from '../assets/images/hmaburger-menu.png'
+import logoutImg from '../assets/images/logout.png';
 import './Header.css';
 import Home from '../home/Home';
 import React, {useEffect} from 'react';
@@ -15,6 +16,7 @@ import Service from '../services/service';
 import User from '../user/user';
 import Visitor from '../visitor/visitor';
 import Payment from '../payment/payment';
+import { logout } from '../session/session';
 function Header() {
   return (
     <Router>
@@ -40,6 +42,10 @@ function Header() {
         </li>
         <li className="nav-item" id="authenticationTab">
           <Link className="nav-Link" to="/authentication">Login/Register</Link>
+        </li>
+        <li className="nav-item" id="logout-tab" className="d-none" onClick={logout}>
+          <p>Logout</p>
+          <img src={logoutImg} height="20px" width="20px" ></img>
         </li>
         <li id="cart">
           <div id="tray">

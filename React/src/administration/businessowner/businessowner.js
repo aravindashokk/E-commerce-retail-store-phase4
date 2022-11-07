@@ -8,8 +8,10 @@ import { addOrder } from '../administration';
 import { addTasks } from '../administration';
 import { addEquipment } from '../administration';
 import { populateTables } from "../administration";
+import validateSession from "../../session/session";
 function BusinessOwner () {
     useEffect(() => {
+        validateSession('BusinessOwner');
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
         document.getElementById('authenticationTab').classList.add('active');
         document.getElementById('authenticationTab').childNodes[0].innerText = 'Business Owner';
