@@ -35,7 +35,7 @@ if(isset($postdata) && !empty($postdata)){
             <HTML><HEAD>Mercado Escolar Password Assistance</HEAD>
             <BODY>
                 <p>
-                    Hi $name, <br /> Following are your Login Credentials<br /> Email: $email ?> <br /> Password: $password ?> <br />We hope you have the best of experience with us.<br /> <br /> Thanks,<br />Mercado Escolar Team.
+                    Hi $name, <br /> Following are your Login Credentials<br /> Email: $email  <br /> New Password: Mercado123  <br />We hope you have the best of experience with us.<br /> <br /> Thanks,<br />Mercado Escolar Team.
                 </p>
             </BODY>
             </HTML>";
