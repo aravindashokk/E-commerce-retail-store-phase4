@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from "react";
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import './createClub.css'
-function CreateClub() {
+function DeleteClub() {
     const initialState = { clubName: '', email: '', schoolId: '', clubDes: '' };
     const [state, setState] = useState({});
     const [clubInfo, setClubInfo] = useState(initialState);
@@ -83,4 +83,4 @@ function CreateClub() {
     </div>
     )
 }
-export default CreateClub
+export default DeleteClub

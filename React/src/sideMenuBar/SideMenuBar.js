@@ -21,7 +21,7 @@ function SideMenuBar () {
                             <Link className="sideNav-link" name="products" to="/user">Products</Link>
                         </li>
                         <li className="sideNavItem" id="subscribe" >
-                            <Link className="sideNav-link" name="clubs" to="/Subscribe">Clubs</Link>
+                            <Link className="sideNav-link" name="clubs" to="/CreateClub">Clubs</Link>
                         </li>
                         <li className="sideNavItem" id="createClub" >
                             <Link className="sideNav-link" name="createClubs" to="/CreateClub">Create a Club</Link>
