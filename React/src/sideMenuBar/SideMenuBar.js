@@ -11,7 +11,7 @@ function SideMenuBar () {
     return (
         <Router>
             <div className="d-flex flex-direction-row container">
-                <div className="font-oswald heading "> Hello User_301287 </div>
+                <div className="font-oswald heading "> Hello User </div>
             </div>
             <div className="user-dashboard-container h-100 d-flex flex-direction-row">
                 <div className="sideNav">

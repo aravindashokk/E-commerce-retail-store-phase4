@@ -28,7 +28,7 @@ function Manager() {
     function updateEquipmentsTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/equipments.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/equipments.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -43,7 +43,7 @@ function Manager() {
     function deleteEqp(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/equipments.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/equipments.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -59,7 +59,7 @@ function Manager() {
     function deleteCustomer(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/customers.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/customers.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -75,7 +75,7 @@ function Manager() {
     function deletePickup(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/pickupdelivery.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/pickupdelivery.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -91,7 +91,7 @@ function Manager() {
     function deleteEmployee(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/Employee.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/Employee.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -136,7 +136,7 @@ function Manager() {
     function addOrEditEquipment(equipment) {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/equipments.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/equipments.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -164,7 +164,7 @@ function Manager() {
     function updateOrderTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/orders.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/orders.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -178,7 +178,7 @@ function Manager() {
     function updateEmployeeTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/Employee.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/Employee.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -192,7 +192,7 @@ function Manager() {
     function updatePickupTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/pickupdelivery.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/pickupdelivery.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -206,7 +206,7 @@ function Manager() {
     function updateCustomerTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/customers.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/customers.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -220,7 +220,7 @@ function Manager() {
     function deleteOrder(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/orders.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/orders.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -267,7 +267,7 @@ function Manager() {
     function addOrEditOrder(order) {
         axios({
             method: 'post',
-            url: 'http://localhost/Selvaraj_Thirumurthy_Mandava_phase4/src/api/' + '/orders.php',
+            url: 'http://localhost/wdm_phase3/React/src/api/' + '/orders.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -309,65 +309,7 @@ function Manager() {
                     <div className="d-flex flex-direction-column align-items-start section-content"><span
                         className="font-oswald section-header">Manage Order</span>
                         <div className="table-container">
-                            <table id="order-table" className="material-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Customer ID</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Phone Number</th>
-                                        <th>Email</th>
-                                        <th>Items</th>
-                                        <th>Service Type</th>
-                                        <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
-                                            onClick={() => addOrderColumn()} src={add} height="13px"
-                                            width="13px" alt='add records' /></th>
-                                    </tr>
-                                    {orders.map(order => {
-                                        if ((order.editOrder || order.addOrder))
-                                            return (<tr>
-                                                <td>{order.Order_ID}</td>
-                                                <td><input type="number" id="customerId" className="font-roboto" name="Customer_ID" placeholder="Customer ID" value={order.Customer_ID} onChange={(event) => handleOrdChange(event, order)} required /></td>
-                                                <td><input type="text" id="fname" name="First_Name" className="font-roboto" placeholder="First Name" value={order.First_Name} onChange={(event) => handleOrdChange(event, order)} required /></td>
-                                                <td><input type="text" id="lane" name="Last_Name" className="font-roboto" placeholder="Last Name" value={order.Last_Name} onChange={(event) => handleOrdChange(event, order)} required /></td>
-                                                <td><input type="number" id="Phonenumber" className="font-roboto" name="Phonenumber" placeholder="Phone Number" value={order.Phonenumber} onChange={(event) => handleOrdChange(event, order)} required /></td>
-                                                <td><input type="text" id="Email" className="font-roboto" name="Email" placeholder="Email" value={order.Email} onChange={(event) => handleOrdChange(event, order)} required /></td>
-                                                <td><input type="number" id="noOfItems" name="items" placeholder="Number of Items" value={order.items} onChange={(event) => handleOrdChange(event, order)} required /></td>
-                                                <td>
-                                                    <select name="Service" id="service" className="font-roboto" value={order.Service} onChange={(event) => handleOrdChange(event, order)} required>
-                                                        <option value="Washing" >Washing</option>
-                                                        <option value="Drying">Drying</option>
-                                                        <option value="Ironing">Ironing</option>
-                                                        <option value="CompleteLaundryService">Complete Laundry Service (Washing+Drying+Ironing)</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <span className="action-icons">
-                                                        <img src={confirmIcon} onClick={() => addOrEditOrder(order)} title="Confirm" />
-                                                        <img src={discardIcon} onClick={() => order.editOrder = false} title="Cancel" />
-                                                    </span></td>
-                                            </tr>);
-                                        else return (
-                                            <tr>
-                                                <td>{order.Order_ID}</td>
-                                                <td>{order.Customer_ID}</td>
-                                                <td>{order.First_Name}</td>
-                                                <td>{order.Last_Name}</td>
-                                                <td>{order.Phonenumber}</td>
-                                                <td>{order.Email}</td>
-                                                <td>{order.items}</td>
-                                                <td>{order.Service}</td>
-                                                <td>
-                                                    <span className="action-icons">
-                                                        <img src={edit} onClick={() => editOrderColumn(order)} title="edit" />
-                                                        <img src={deleteIcon} onClick={() => deleteOrder(order.Order_ID)} title="delete" />
-                                                    </span>
-                                                </td>
-                                            </tr>)
-                                    })}
-                                </tbody>
-                            </table>
+                            
                         </div>
                     </div>
 
@@ -376,64 +318,7 @@ function Manager() {
                         className="font-oswald section-header">Manage Equipment</span>
                         <div className="table-container">
                             <table id="equipment-table" className="material-table">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Equipment Type</th>
-                                        <th>Model No</th>
-                                        <th>Brand Name</th>
-                                        <th>Load Capacity</th>
-                                        <th>Status</th>
-                                        <th>Order ID</th>
-                                        <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
-                                            onClick={() => addEquipmentColumn()} src={add} height="13px"
-                                            width="13px" alt='add records' /></th>
-                                    </tr>
-                                    {equipments.map(equipment => {
-                                        if ((equipment.editEquipment || equipment.addEquipment))
-                                            return (<tr>
-                                                <td>{equipment.ID}</td>
-                                                <td>
-                                                    <select name="Equipment_Type" id="equipmentType" className="font-roboto" value={equipment.Equipment_Type} onChange={(event) => handleEqpChange(event, equipment)} required>
-                                                        <option value="Washing Machine" >Washing Machine</option>
-                                                        <option value="Dryer">Dryer</option>
-                                                        <option value="Iron Box">Iron Box</option>
-                                                        <option value="Weights">Weights</option>
-                                                        <option value="Basket">Basket</option>
-                                                    </select>
-                                                </td>
-                                                <td><input type="text" id="modelNo" name="Model_No" className="font-roboto" placeholder="Model No" value={equipment.Model_No} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td><input type="text" id="brandName" name="Brand_Name" className="font-roboto" placeholder="Brand_Name" value={equipment.Brand_Name} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td><input type="number" id="loadCapacity" className="font-roboto" name="Load_Capacity" placeholder="Load_Capacity" value={equipment.Load_Capacity} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td><select name="Status" id="status" className="font-roboto" value={equipment.Status} onChange={(event) => handleEqpChange(event, equipment)} required>
-                                                    <option value="Available" >Available</option>
-                                                    <option value="InUse">In Use</option>
-                                                </select></td>
-                                                <td><input type="number" id="orderid" name="Order_ID" placeholder="Order ID" value={equipment.Order_ID} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td>
-                                                    <span className="action-icons">
-                                                        <img src={confirmIcon} onClick={() => addOrEditEquipment(equipment)} title="Confirm" />
-                                                        <img src={discardIcon} onClick={() => equipment.editEquipment = false} title="Cancel" />
-                                                    </span></td>
-                                            </tr>);
-                                        else return (
-                                            <tr>
-                                                <td>{equipment.ID}</td>
-                                                <td>{equipment.Equipment_Type}</td>
-                                                <td>{equipment.Model_No}</td>
-                                                <td>{equipment.Brand_Name}</td>
-                                                <td>{equipment.Load_Capacity}</td>
-                                                <td>{equipment.Status}</td>
-                                                <td>{equipment.Order_ID}</td>
-                                                <td>
-                                                    <span className="action-icons">
-                                                        <img src={edit} onClick={() => editEquipmentColumn(equipment)} title="edit" />
-                                                        <img src={deleteIcon} onClick={() => deleteEqp(equipment.ID)} title="delete" />
-                                                    </span>
-                                                </td>
-                                            </tr>)
-                                    })}
-                                </tbody>
+                                
                             </table>
                         </div>
                     </div>
