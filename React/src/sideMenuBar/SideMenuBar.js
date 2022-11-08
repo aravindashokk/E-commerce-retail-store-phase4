@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import Chat from '../chat/chat';
 import JoinClub from '../clubs/joinClub/joinClub';
+import CreateClub from '../clubs/createClub/createClub';
 
 import PlaceOrder from '../placeorder/placeorder';
 import RegisterIncident from '../registerIncident/registerIncident';
@@ -22,8 +23,11 @@ function SideMenuBar () {
                         <li className="sideNavItem" id="subscribe" >
                             <Link className="sideNav-link" name="clubs" to="/Subscribe">Clubs</Link>
                         </li>
+                        <li className="sideNavItem" id="createClub" >
+                            <Link className="sideNav-link" name="createClubs" to="/CreateClub">Create a Club</Link>
+                        </li>
                         <li className="sideNavItem" id="joinClub" >
-                            <Link className="sideNav-link" name="clubs" to="/JoinClub">Join a Club</Link>
+                            <Link className="sideNav-link" name="joinClubs" to="/JoinClub">Join a Club</Link>
                         </li>
                         <li className="sideNavItem" id="register" >
                             <Link className="sideNav-link" name="profile" to="/Register">My Profile</Link>
@@ -39,6 +43,7 @@ function SideMenuBar () {
                 <section className='d-flex w-100 justify-center'>
             <Switch>
                 <Route exact path='/JoinClub'><JoinClub/></Route>
+                <Route exact path='/CreateClub'><CreateClub/></Route>
                 <Route exact path='/user'><PlaceOrder/></Route>
                 <Route exact path='/Subscribe'><SubscribeService/></Route>
                 <Route exact path='/Register'><RegisterIncident/></Route>
