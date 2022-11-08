@@ -30,7 +30,7 @@ function Login() {
         event.preventDefault();
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api' + '/login.php',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/login.php',
             headers: {
                 'content-type': 'application/json'
             },

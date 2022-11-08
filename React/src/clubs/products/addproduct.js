@@ -15,7 +15,7 @@ function Addproduct() {
         event.preventDefault();
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + 'addproduct.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + 'addproduct.php',
             headers: {
                 'content-type': 'application/json'
             },

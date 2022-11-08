@@ -36,7 +36,7 @@ function Registration() {
         }
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/registerUser.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/registerUser.php',
             headers: {
                 'content-type': 'application/json'
             },

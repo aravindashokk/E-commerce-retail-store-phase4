@@ -15,7 +15,7 @@ function DeleteClub() {
         event.preventDefault();
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + 'createClub.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + 'createClub.php',
             headers: {
                 'content-type': 'application/json'
             },
