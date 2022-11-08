@@ -17,8 +17,16 @@ function SchoolAdmin() {
         validateSession('SchoolAdmin');
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
         document.getElementById('authenticationTab').classList.add('active');
-       
+       getAllCustomers();
     }, []);
+
+    const getAllCustomers=() => {
+        axios.get("http://localhost/wdm_phase3/React/src/api/getcustomers.php")
+        .then(res=> {
+            console.log(res.data)
+            setCustomers(res.data)
+        })
+    }
     
 
     return (
@@ -51,6 +59,17 @@ function SchoolAdmin() {
                                             onClick={() => { }} src={add} height="13px"
                                             width="13px" alt='add records' /></th>
                                     </tr>
+                                    {customers.map(customer => (
+                                        <tr>
+                                            
+                                            <td>{customer.First_Name}</td>
+                                            <td>{customer.Last_Name}</td>
+                                            <td>{customer.Email}</td>
+                                            <td>{customer.Phone}</td>
+                                            <td>{customer.User_Type}</td>
+                                            <td>{''}</td>
+                                           
+                                        </tr>))}
                                    
                                 </tbody>
                             </table>
