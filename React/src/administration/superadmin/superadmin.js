@@ -308,7 +308,7 @@ function SuperAdmin() {
           'SchoolAdmin'
         ],
         datasets: [{
-          data: [300, 50, 100],
+          data: [3, 5, 2],
           backgroundColor: [
           '#FF6384',
           '#36A2EB',
