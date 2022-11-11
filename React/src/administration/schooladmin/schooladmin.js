@@ -9,16 +9,18 @@ import confirmIcon from '../../assets/images/tick.png';
 import discardIcon from '../../assets/images/tick.png';
 import edit from '../../assets/images/tick.png';
 function SchoolAdmin() {
-    const [orders, setOrders] = useState([]);
-    const [equipments, setEquipments] = useState([]);
+    const [clubs, setClub] = useState([]);
+    const [posts, setPost] = useState([]);
     const [customers, setCustomers] = useState([]);
-    const [employee, setEmployee] = useState([]);
+    const [businesss, setBusiness] = useState([]);
     useEffect(() => {
         validateSession('SchoolAdmin');
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
         document.getElementById('authenticationTab').classList.add('active');
     //    getAllCustomers();
     updateCustomerTable();
+    updateBusinessTable();
+    updatePostsTable();
     }, []);
 
 
@@ -41,6 +43,44 @@ function SchoolAdmin() {
         });
     }
 
+    function deleteBusiness(elementId) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/business.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'deleteBusiness', Data: { ID: elementId } }
+        }).then(result => {
+            
+            businesss.splice(businesss.findIndex(business => business.ID === elementId), 1)
+            
+            setBusiness(businesss);
+            console.log(businesss)
+            updateBusinessTable();
+        }).catch(error => {
+        });
+    }
+
+    function deletePosts(elementId) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/posts.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'deletePosts', Data: { post_ID: elementId } }
+        }).then(result => {
+            
+            posts.splice(posts.findIndex(post => post.post_ID === elementId), 1)
+            
+            setPost(posts);
+            console.log(posts)
+            updatePostsTable();
+        }).catch(error => {
+        });
+    }
+
     function updateCustomerTable() {
         axios({
             method: 'post',
@@ -57,6 +97,38 @@ function SchoolAdmin() {
         });
     }
 
+    function updateBusinessTable() {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/business.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'getAllBusiness',Data:{} }
+        }).then(result => {
+            console.log(result.data);
+            setBusiness(result.data);
+            
+        }).catch(error => {
+        });
+    }
+
+    function updatePostsTable() {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/posts.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'getAllPosts',Data:{} }
+        }).then(result => {
+            console.log(result.data);
+            setPost(result.data);
+            
+        }).catch(error => {
+        });
+    }
+
     function editCustomerColumn(customer) {
         customers.map(customer => {
             if (customer.addcustomer) {
@@ -67,6 +139,30 @@ function SchoolAdmin() {
         let index = customers.findIndex(cus => cus.ID === customer.ID);
         customers[index] = customer;
         setCustomers([...customers]);
+    }
+
+    function editBusinessColumn(business) {
+        businesss.map(business => {
+            if (business.addbusiness) {
+                business.addbusiness = false;
+            }
+        });
+        business.editbusiness = true;
+        let index = businesss.findIndex(cus => cus.ID === business.ID);
+        businesss[index] = business;
+        setBusiness([...businesss]);
+    }
+
+    function editPostsColumn(post) {
+        posts.map(post => {
+            if (post.addpost) {
+                post.addpost = false;
+            }
+        });
+        post.editpost = true;
+        let index = posts.findIndex(cus => cus.ID === post.ID);
+        posts[index] = post;
+        setPost([...posts]);
     }
 
     function addCustomerColumn() {
@@ -87,6 +183,40 @@ function SchoolAdmin() {
         setCustomers([...customers]);
     }
 
+    function addBusinessColumn() {
+        if (businesss.find(business => business.addbusiness)) {
+            return;
+        }
+        let business = {
+            ID: (1020 || (Number(businesss[businesss.length - 1].ID) + 1)).toString(),
+            First_Name: '',
+            Last_Name: '',
+            Email: '',
+            Phone: '',
+            User_Type: '',
+            addbusiness: true,
+            
+        }
+        businesss.push(business);
+        setBusiness([...businesss]);
+    }
+
+    function addPostColumn() {
+        if (posts.find(post => post.addposts)) {
+            return;
+        }
+        let post = {
+            post_ID: (1433 || (Number(posts[posts.length - 1].ID) + 1)).toString(),
+            creator_ID:'',
+            post_desc:'',
+            created_date:'',
+            addposts: true,
+            
+        }
+        posts.push(post);
+        setPost([...posts]);
+    }
+
     function addOrEditCustomer(customer) {
         axios({
             method: 'post',
@@ -104,6 +234,40 @@ function SchoolAdmin() {
         });
     }
 
+    function addOrEditBusiness(business) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/business.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: (business.editbusiness ? 'alterRecordb' : 'addNewBusiness'), Data: business }
+        }).then(result => {
+            business.editbusiness = false;
+            business.addbusiness = false;
+            setBusiness(businesss);
+            updateBusinessTable();
+        }).catch(error => {
+        });
+    }
+
+    function addOrEditposts(post) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/posts.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: (post.editposts ? 'alterRecordp' : 'addNewPost'), Data: post }
+        }).then(result => {
+            post.editposts = false;
+            post.addposts = false;
+            setPost(posts);
+            updatePostsTable();
+        }).catch(error => {
+        });
+    }
+
     function handleCusChange(event, customer) {
         const { name, value } = event.target;
         customers.forEach((cus) => {
@@ -112,6 +276,26 @@ function SchoolAdmin() {
             }
         });
         setCustomers([...customers]);
+    }
+
+    function handleBusChange(event, customer) {
+        const { name, value } = event.target;
+        businesss.forEach((cus) => {
+            if (cus.ID === customer.ID) {
+                cus[name] = value;
+            }
+        });
+        setBusiness([...businesss]);
+    }
+
+    function handlePosChange(event, post) {
+        const { name, value } = event.target;
+        posts.forEach((cus) => {
+            if (cus.post_ID === post.post_ID) {
+                cus[name] = value;
+            }
+        });
+        setPost([...posts]);
     }
 
     
@@ -185,100 +369,112 @@ function SchoolAdmin() {
                         </div>
                     </div>
 
-                    {/* Manage equipment table  */}
-                    {/* <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Business Owner's </span>
+                    {/* Manage Business Owners table  */}
+                    <div className="d-flex flex-direction-column align-items-start section-content"><span
+                        className="font-oswald section-header">Manage Business Owners </span>
                         <div className="table-container">
-                            <table id="equipment-table" className="material-table">
+                        <table id="business-table" className="material-table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Equipment Type</th>
-                                        <th>Model No</th>
-                                        <th>Brand Name</th>
-                                        <th>Load Capacity</th>
-                                        <th>Status</th>
-                                        <th>Order ID</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>User_Type</th>
                                         <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
-                                            onClick={() => addEquipmentColumn()} src={add} height="13px"
-                                            width="13px" alt='add records' />
-                                        </th>
+                                            onClick={() => addBusinessColumn()} src={add} height="13px"
+                                            width="13px" alt='add records' /></th>
                                     </tr>
-                                    {equipments.map(equipment => {
-                                        if ((equipment.editEquipment || equipment.addEquipment))
-                                            return (<tr>
-                                                <td>{equipment.ID}</td>
-                                                <td>
-                                                    <select name="Equipment_Type" id="equipmentType" className="font-roboto" value={equipment.Equipment_Type} onChange={(event) => handleEqpChange(event, equipment)} required>
-                                                        <option value="Washing Machine" >Washing Machine</option>
-                                                        <option value="Dryer">Dryer</option>
-                                                        <option value="Iron Box">Iron Box</option>
-                                                        <option value="Weights">Weights</option>
-                                                        <option value="Basket">Basket</option>
-                                                    </select>
-                                                </td>
-                                                <td><input type="text" id="modelNo" name="Model_No" className="font-roboto" placeholder="Model No" value={equipment.Model_No} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td><input type="text" id="brandName" name="Brand_Name" className="font-roboto" placeholder="Brand_Name" value={equipment.Brand_Name} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td><input type="number" id="loadCapacity" className="font-roboto" name="Load_Capacity" placeholder="Load_Capacity" value={equipment.Load_Capacity} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td><select name="Status" id="status" className="font-roboto" value={equipment.Status} onChange={(event) => handleEqpChange(event, equipment)} required>
-                                                    <option value="Available" >Available</option>
-                                                    <option value="InUse">In Use</option>
-                                                </select></td>
-                                                <td><input type="number" id="orderid" name="Order_ID" placeholder="Order ID" value={equipment.Order_ID} onChange={(event) => handleEqpChange(event, equipment)} required /></td>
-                                                <td>
-                                                    <span className="action-icons">
-                                                        <img src={confirmIcon} onClick={() => addOrEditEquipment(equipment)} title="Confirm" />
-                                                        <img src={discardIcon} onClick={() => equipment.editEquipment = false} title="Cancel" />
-                                                    </span></td>
-                                            </tr>);
-                                        else return (
-                                            <tr>
-                                                <td>{equipment.ID}</td>
-                                                <td>{equipment.Equipment_Type}</td>
-                                                <td>{equipment.Model_No}</td>
-                                                <td>{equipment.Brand_Name}</td>
-                                                <td>{equipment.Load_Capacity}</td>
-                                                <td>{equipment.Status}</td>
-                                                <td>{equipment.Order_ID}</td>
-                                                <td>
-                                                    <span className="action-icons">
-                                                        <img src={edit} onClick={() => editEquipmentColumn(equipment)} title="edit" />
-                                                        <img src={deleteIcon} onClick={() => deleteEqp(equipment.ID)} title="delete" />
-                                                    </span>
-                                                </td>
-                                            </tr>)
+
+                                    {businesss.map(business => {
+                                        if ((business.editbusiness || business.addbusiness))
+                                        return (<tr>
+                                            <td><input type="text" id="First_Name" name="First_Name" className="font-roboto" placeholder="First Name" value={business.First_Name} onChange={(event) => handleBusChange(event, business)} required /></td>
+                                            <td><input type="text" id="Last_Name" name="Last_Name" className="font-roboto" placeholder="Last Name" value={business.Last_Name} onChange={(event) => handleBusChange(event, business)} required /></td>
+                                            <td><input type="text" id="Email" className="font-roboto" name="Email" placeholder="Email" value={business.Email} onChange={(event) => handleBusChange(event, business)} required /></td>
+                                            <td><input type="text" id="Phone" className="font-roboto" name="Phone" placeholder="Phone" value={business.Phone} onChange={(event) => handleBusChange(event, business)} required /></td>
+                                            <td><input type="text" id="User_Type" className="font-roboto" name="User_Type" placeholder="User_Type " value='BusinessOwner'  /></td>
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={confirmIcon} onClick={() => addOrEditBusiness(business)} title="Confirm" />
+                                                    <img src={discardIcon} onClick={() => business.editbusiness = false} title="Cancel" />
+                                                </span></td>
+                                        </tr>);
+                                    else return (
+                                        <tr>
+                                            <td>{business.First_Name}</td>
+                                            <td>{business.Last_Name}</td>
+                                            <td>{business.Email}</td>
+                                            <td>{business.Phone}</td>
+                                            <td>{business.User_Type}</td>
+                                            
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={edit} onClick={() => editBusinessColumn(business)} title="edit" />
+                                                    <img src={deleteIcon} onClick={() => deleteBusiness(business.ID)} title="delete" />
+                                                </span>
+                                            </td>
+                                        </tr>)
                                     })}
+                                   
                                 </tbody>
                             </table>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
 
                 {/* Horizontal row section containing multiple tables  */}
                 <div className="d-flex flex-direction-row justify-around section-container" id="manager-actions">
 
-                    {/* Manual Order table  */}
-                    {/* <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manual Order</span>
-                        <div className="d-flex flex-direction-row order-container">
-                            <div className="d-flex flex-direction-column justify-between">
-                                <input type="text" placeholder="Customer Name" required="required" />
-                                <input type="text" placeholder="Phone Number" required="required" maxLength="10" />
-                                <label>Service Type:</label>
-                                <select name="services" id="services">
-                                    <option value="Washing">Washing</option>
-                                    <option value="Drying">Drying</option>
-                                    <option value="Ironing">Ironing</option>
-                                    <option value="Pickup">Pickup</option>
-                                    <option value="Delivery">Delivery</option>
-                                </select>
-                            </div>
-                            <div className="d-flex flex-direction-column justify-between">
-                                <input type="text-area" placeholder="Description" />
-                                <input type="submit" className="btn submit-order" />
-                            </div>
+                    {/* Manage Posts table  */}
+                    <div className="d-flex flex-direction-column align-items-start section-content"><span
+                        className="font-oswald section-header">Manage Posts </span>
+                        <div className="table-container">
+                        <table id="posts-table" className="material-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Post_ID</th>
+                                        <th>Creator_ID</th>
+                                        <th>Post_Description</th>
+                                        <th>Created_Date</th>
+                                        <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
+                                            onClick={() => addPostColumn()} src={add} height="13px"
+                                            width="13px" alt='add records' /></th>
+                                    </tr>
+
+                                    {posts.map(post => {
+                                        if ((post.editposts || post.addposts))
+                                        return (<tr>
+                                            <td><input type="text" id="post_ID" name="post_ID" className="font-roboto" placeholder="Post ID" value={post.post_ID} onChange={(event) => handlePosChange(event, post)}  /></td>
+                                            <td><input type="text" id="creator_ID" name="creator_ID" className="font-roboto" placeholder="Creator ID" value={post.creator_ID} onChange={(event) => handlePosChange(event, post)}  /></td>
+                                            <td><input type="text" id="post_desc" className="font-roboto" name="post_desc" placeholder="description" value={post.post_desc} onChange={(event) => handlePosChange(event, post)}  /></td>
+                                            <td><input type="date" id="created_date" className="font-roboto" name="created_date" placeholder="created_date" value={post.created_date} onChange={(event) => handlePosChange(event, post)}  /></td>
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={confirmIcon} onClick={() => addOrEditposts(post)} title="Confirm" />
+                                                    <img src={discardIcon} onClick={() => post.editposts = false} title="Cancel" />
+                                                </span></td>
+                                        </tr>);
+                                    else return (
+                                        <tr>
+                                            <td>{post.post_ID}</td>
+                                            <td>{post.creator_ID}</td>
+                                            <td>{post.post_desc}</td>
+                                            <td>{post.created_date}</td>
+                                            
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={edit} onClick={() => editPostsColumn(post)} title="edit" />
+                                                    <img src={deleteIcon} onClick={() => deletePosts(post.post_ID)} title="delete" />
+                                                </span>
+                                            </td>
+                                        </tr>)
+                                    })}
+                                   
+                                </tbody>
+                            </table>
                         </div>
-                    </div> */}
+                    </div>
 
                     {/* Manage tasks table  */}
                     {/* <div className="d-flex flex-direction-column align-items-start section-content"><span

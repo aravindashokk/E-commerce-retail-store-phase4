@@ -13,8 +13,8 @@ if(isset($requestdata)){
 }
 
 
-function getAllCustomers($data){
-     $sql = "SELECT * FROM Customer WHERE User_Type='Student'";
+function getAllBusiness($data){
+     $sql = "SELECT * FROM Customer WHERE User_Type='BusinessOwner'";
      $result = mysqli_query($data[0], $sql);
      if($result){
           $rows = array();
@@ -27,7 +27,7 @@ function getAllCustomers($data){
      }
 }
 
-function addNewCustomer($request) {
+function addNewBusiness($request) {
     $First_Name = $request[1]-> First_Name;
     $Last_Name = $request[1]-> Last_Name;
     $Email = $request[1]-> Email;
@@ -38,7 +38,7 @@ function addNewCustomer($request) {
     $Phone= $request[1]-> Phone;
     $User_Type = $request[1]-> User_Type;
     $ID = (int)((rand() * rand())/rand());
-    $sql = "INSERT INTO Customer (First_Name,Last_Name,Email,Phone,User_Type,ID,Password) VALUES ('$First_Name','$Last_Name','$Email','$Phone','Student',$ID,'$2y$09aIOeJpsEaLCCHSTPS3zefOIU6BfeZps8Ak4gkbCwWFoiH1mnYWeyC')";
+    $sql = "INSERT INTO Customer (First_Name,Last_Name,Email,Phone,User_Type,ID,Password) VALUES ('$First_Name','$Last_Name','$Email','$Phone','BusinessOwner',$ID,'$2y$09aIOeJpsEaLCCHSTPS3zefOIU6BfeZps8Ak4gkbCwWFoiH1mnYWeyC')";
     $result = mysqli_query($request[0], $sql);
      if($result){
          echo "Customer added Successfully";
@@ -49,9 +49,7 @@ function addNewCustomer($request) {
      }
 }
 
-function deleteCustomer($inputData) {
-
-
+function deleteBusiness($inputData) {
 
     $ID=$inputData[1]-> ID;
     $sql = "DELETE FROM Customer WHERE ID = $ID";
@@ -65,7 +63,7 @@ function deleteCustomer($inputData) {
     } 
 }
 
-function alterRecord($inputData) {
+function alterRecordb($inputData) {
     $ID=$inputData[1]-> ID;
     $First_Name = $inputData[1]-> First_Name;
     $Last_Name = $inputData[1]-> Last_Name;
@@ -76,7 +74,7 @@ function alterRecord($inputData) {
     }
     $Phone= $inputData[1]-> Phone;
     
-    $sql = "UPDATE Customer Set Email = '$Email' ,First_Name = '$First_Name' ,Last_Name = '$Last_Name',Phone = '$Phone',User_Type = 'Student' WHERE ID = $ID";
+    $sql = "UPDATE Customer Set Email = '$Email' ,First_Name = '$First_Name' ,Last_Name = '$Last_Name',Phone = '$Phone',User_Type = 'BusinessOwner',Password='$2y$09aIOeJpsEaLCCHSTPS3zefOIU6BfeZps8Ak4gkbCwWFoiH1mnYWeyC' WHERE ID = $ID";
     $result = mysqli_query($inputData[0], $sql);
     if($result){
         echo "Customer Updated Successfully";
