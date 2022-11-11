@@ -8,6 +8,9 @@ import deleteIcon from '../../assets/images/delete.png';
 import confirmIcon from '../../assets/images/tick.png';
 import discardIcon from '../../assets/images/close.png';
 import edit from '../../assets/images/edit.png';
+import {Doughnut} from 'react-chartjs-2';
+import { ArcElement } from "chart.js";
+import Chart from "chart.js/auto";
 function SuperAdmin() {
     const [customers, setCustomers] = useState([]);
     const [businesss, setBusiness] = useState([]);
@@ -298,6 +301,27 @@ function SuperAdmin() {
         setSchool([...schools]);
     }
 
+    const data = {
+        labels: [
+          'Student',
+          'BusinessOwner',
+          'SchoolAdmin'
+        ],
+        datasets: [{
+          data: [300, 50, 100],
+          backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56'
+          ],
+          hoverBackgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56'
+          ]
+        }]
+      };
+
     return (
         <section className='administration-bg hide-section'>
             {/* Header section title */}
@@ -475,9 +499,12 @@ function SuperAdmin() {
                             </table>
                         </div>
                     </div>
-                  
-                   
+                    <div className="d-flex flex-direction-column align-items-start section-content"><span
+                        className="font-oswald section-header">Report </span>
+                        <Doughnut data={data} />
+                    </div>
                 </div>
+                
 
                 
 
