@@ -97,6 +97,7 @@ function Registration() {
                                             <option value="Student">Student</option>
                                             <option value="BusinessOwner">Business Owner</option>
                                             <option value="SchoolAdmin">School Admin</option>
+                                            <option value="SuperAdmin">Super Admin</option>
                                         </select>
                                         <label for="userType" className="user-label">Select User Type</label>
                                     </div>

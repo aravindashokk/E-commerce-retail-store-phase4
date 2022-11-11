@@ -427,10 +427,10 @@ function SchoolAdmin() {
                                     {customers.map(customer => {
                                         if ((customer.editcustomer || customer.addcustomer))
                                         return (<tr>
-                                            <td><input type="text" id="First_Name" name="First_Name" className="font-roboto" placeholder="First Name" value={customer.First_Name} onChange={(event) => handleCluChange(event, customer)}  /></td>
-                                            <td><input type="text" id="Last_Name" name="Last_Name" className="font-roboto" placeholder="Last Name" value={customer.Last_Name} onChange={(event) => handleCluChange(event, customer)}  /></td>
-                                            <td><input type="text" id="Email" className="font-roboto" name="Email" placeholder="Email" value={customer.Email} onChange={(event) => handleCluChange(event, customer)}  /></td>
-                                            <td><input type="text" id="Phone" className="font-roboto" name="Phone" placeholder="Phone" value={customer.Phone} onChange={(event) => handleCluChange(event, customer)}  /></td>
+                                            <td><input type="text" id="First_Name" name="First_Name" className="font-roboto" placeholder="First Name" value={customer.First_Name} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Last_Name" name="Last_Name" className="font-roboto" placeholder="Last Name" value={customer.Last_Name} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Email" className="font-roboto" name="Email" placeholder="Email" value={customer.Email} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Phone" className="font-roboto" name="Phone" placeholder="Phone" value={customer.Phone} onChange={(event) => handleCusChange(event, customer)}  /></td>
                                             <td><input type="text" id="User_Type" className="font-roboto" name="User_Type" placeholder="User_Type " value='Student'  /></td>
                                             <td>
                                                 <span className="action-icons">
