@@ -4,10 +4,13 @@ import add from '../../assets/images/plus.png';
 import { populateTables } from '../administration';
 import validateSession from "../../session/session";
 import axios from "axios";
-import deleteIcon from '../../assets/images/tick.png';
+import deleteIcon from '../../assets/images/delete.png';
 import confirmIcon from '../../assets/images/tick.png';
-import discardIcon from '../../assets/images/tick.png';
-import edit from '../../assets/images/tick.png';
+import discardIcon from '../../assets/images/close.png';
+import edit from '../../assets/images/edit.png';
+import {Doughnut} from 'react-chartjs-2';
+import { ArcElement } from "chart.js";
+import Chart from "chart.js/auto";
 function SchoolAdmin() {
     const [clubs, setClub] = useState([]);
     const [posts, setPost] = useState([]);
@@ -94,9 +97,9 @@ function SchoolAdmin() {
             
             clubs.splice(clubs.findIndex(club => club.club_ID === elementId), 1)
             
-            setPost(clubs);
+            setClub(clubs);
             console.log(clubs)
-            updatePostsTable();
+            updateClubsTable();
         }).catch(error => {
         });
     }
@@ -270,7 +273,7 @@ function SchoolAdmin() {
             return;
         }
         let club = {
-            club_ID: (9433 || (Number(clubs[clubs.length - 1].ID) + 1)).toString(),
+            club_ID: (9491 || (Number(clubs[clubs.length - 1].ID) + 1)).toString(),
             club_name:'',
             club_email:'',
             school_Id:'',
@@ -390,7 +393,29 @@ function SchoolAdmin() {
         setClub([...clubs]);
     }
 
-    
+    const data = {
+        labels: [
+          'Student',
+          'BusinessOwner',
+          'Posts',
+          'Clubs'
+        ],
+        datasets: [{
+          data: [3, 5, 4,2],
+          backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#FFFF00',
+          ],
+          hoverBackgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#FFFF00.',
+          ]
+        }]
+      };
     
 
     return (
@@ -624,46 +649,12 @@ function SchoolAdmin() {
                 </div>
 
                 {/* Horizontal row section containing multiple tables  */}
-                <div className="d-flex flex-direction-row justify-around section-container">
+                <div className="d-flex flex-direction-column align-items-start section-content">
+                    <span className="font-oswald section-header">Report </span>
+                    <Doughnut data={data} />
 
                     {/* Manage Customers table  */}
-                    {/* <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Customers</span>
-                        <div className="table-container">
-                            <table id="customer-table" className="material-table">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>First Nmae</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Created Date</th>
-                                        <th>User Type</th>
-                                        <th>Address</th>
-                                        <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
-                                            onClick={() => { }} src={add} height="13px"
-                                            width="13px" alt='add records' /></th>
-                                    </tr>
-                                    {customers.map(customer => (
-                                        <tr>
-                                            <td>{customer.ID}</td>
-                                            <td>{customer.First_Name}</td>
-                                            <td>{customer.Last_Name}</td>
-                                            <td>{customer.Email}</td>
-                                            <td>{customer.Created_Date}</td>
-                                            <td>{customer.User_Type}</td>
-                                            <td>{''}</td>
-                                            <td>
-                                                <span className="action-icons">
-                                                    <img src={edit} onClick={() => { }} title="edit" />
-                                                    <img src={deleteIcon} onClick={() => deleteCustomer(customer.ID)} title="delete" />
-                                                </span>
-                                            </td>
-                                        </tr>))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> */}
+                    
 
                     {/* Manage Pickup/Delivery table  */}
                     {/* <div className="d-flex flex-direction-column align-items-start section-content"><span
