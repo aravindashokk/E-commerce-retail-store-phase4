@@ -28,7 +28,7 @@ function Manager() {
     function updateEquipmentsTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/equipments.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/equipments.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -43,7 +43,7 @@ function Manager() {
     function deleteEqp(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/equipments.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/equipments.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -59,7 +59,7 @@ function Manager() {
     function deleteCustomer(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/customers.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/customers.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -75,7 +75,7 @@ function Manager() {
     function deletePickup(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/pickupdelivery.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/pickupdelivery.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -91,7 +91,7 @@ function Manager() {
     function deleteEmployee(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/Employee.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/Employee.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -136,7 +136,7 @@ function Manager() {
     function addOrEditEquipment(equipment) {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/equipments.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/equipments.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -164,7 +164,7 @@ function Manager() {
     function updateOrderTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/orders.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/orders.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -178,7 +178,7 @@ function Manager() {
     function updateEmployeeTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/Employee.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/Employee.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -192,7 +192,7 @@ function Manager() {
     function updatePickupTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/pickupdelivery.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/pickupdelivery.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -206,7 +206,7 @@ function Manager() {
     function updateCustomerTable() {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/customers.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/customers.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -220,7 +220,7 @@ function Manager() {
     function deleteOrder(elementId) {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/orders.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/orders.php',
             headers: {
                 'content-type': 'application/json'
             },
@@ -267,7 +267,7 @@ function Manager() {
     function addOrEditOrder(order) {
         axios({
             method: 'post',
-            url: 'http://localhost/wdm_phase3/React/src/api/' + '/orders.php',
+            url: 'http://localhost/wdm_phase4/React/src/api/' + '/orders.php',
             headers: {
                 'content-type': 'application/json'
             },

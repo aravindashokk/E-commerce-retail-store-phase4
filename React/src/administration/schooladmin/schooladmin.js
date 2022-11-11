@@ -4,10 +4,10 @@ import add from '../../assets/images/plus.png';
 import { populateTables } from '../administration';
 import validateSession from "../../session/session";
 import axios from "axios";
-import deleteIcon from '../../assets/images/delete.png';
+import deleteIcon from '../../assets/images/tick.png';
 import confirmIcon from '../../assets/images/tick.png';
-import discardIcon from '../../assets/images/close.png';
-import edit from '../../assets/images/edit.png';
+import discardIcon from '../../assets/images/tick.png';
+import edit from '../../assets/images/tick.png';
 function SchoolAdmin() {
     const [orders, setOrders] = useState([]);
     const [equipments, setEquipments] = useState([]);
@@ -17,16 +17,104 @@ function SchoolAdmin() {
         validateSession('SchoolAdmin');
         document.getElementsByClassName('nav-item active')[0].classList.remove('active');
         document.getElementById('authenticationTab').classList.add('active');
-       getAllCustomers();
+    //    getAllCustomers();
+    updateCustomerTable();
     }, []);
 
-    const getAllCustomers=() => {
-        axios.get("http://localhost/wdm_phase3/React/src/api/getcustomers.php")
-        .then(res=> {
-            console.log(res.data)
-            setCustomers(res.data)
-        })
+
+    function deleteCustomer(elementId) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/customers.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'deleteCustomer', Data: { ID: elementId } }
+        }).then(result => {
+            
+            customers.splice(customers.findIndex(customer => customer.ID === elementId), 1)
+            
+            setCustomers(customers);
+            console.log(customers)
+            updateCustomerTable();
+        }).catch(error => {
+        });
     }
+
+    function updateCustomerTable() {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/customers.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'getAllCustomers',Data:{} }
+        }).then(result => {
+            console.log(result.data);
+            setCustomers(result.data);
+            
+        }).catch(error => {
+        });
+    }
+
+    function editCustomerColumn(customer) {
+        customers.map(customer => {
+            if (customer.addcustomer) {
+                customer.addcustomer = false;
+            }
+        });
+        customer.editcustomer = true;
+        let index = customers.findIndex(cus => cus.ID === customer.ID);
+        customers[index] = customer;
+        setCustomers([...customers]);
+    }
+
+    function addCustomerColumn() {
+        if (customers.find(customer => customer.addcustomer)) {
+            return;
+        }
+        let customer = {
+            ID: (100 || (Number(customers[customers.length - 1].ID) + 1)).toString(),
+            First_Name: '',
+            Last_Name: '',
+            Email: '',
+            Phone: '',
+            User_Type: '',
+            addcustomer: true,
+            
+        }
+        customers.push(customer);
+        setCustomers([...customers]);
+    }
+
+    function addOrEditCustomer(customer) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/customers.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: (customer.editcustomer ? 'alterRecord' : 'addNewCustomer'), Data: customer }
+        }).then(result => {
+            customer.editcustomer = false;
+            customer.addcustomer = false;
+            setCustomers(customers);
+            updateCustomerTable();
+        }).catch(error => {
+        });
+    }
+
+    function handleCusChange(event, customer) {
+        const { name, value } = event.target;
+        customers.forEach((cus) => {
+            if (cus.ID === customer.ID) {
+                cus[name] = value;
+            }
+        });
+        setCustomers([...customers]);
+    }
+
+    
     
 
     return (
@@ -50,16 +138,31 @@ function SchoolAdmin() {
                                 <tbody>
                                     <tr>
                                         
-                                        <th>First Nmae</th>
+                                        <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>User_Type</th>
                                         <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
-                                            onClick={() => { }} src={add} height="13px"
+                                            onClick={() => addCustomerColumn()} src={add} height="13px"
                                             width="13px" alt='add records' /></th>
                                     </tr>
-                                    {customers.map(customer => (
+
+                                    {customers.map(customer => {
+                                        if ((customer.editcustomer || customer.addcustomer))
+                                        return (<tr>
+                                            <td><input type="text" id="First_Name" name="First_Name" className="font-roboto" placeholder="First Name" value={customer.First_Name} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Last_Name" name="Last_Name" className="font-roboto" placeholder="Last Name" value={customer.Last_Name} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Email" className="font-roboto" name="Email" placeholder="Email" value={customer.Email} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Phone" className="font-roboto" name="Phone" placeholder="Phone" value={customer.Phone} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="User_Type" className="font-roboto" name="User_Type" placeholder="User_Type " value='Student'  /></td>
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={confirmIcon} onClick={() => addOrEditCustomer(customer)} title="Confirm" />
+                                                    <img src={discardIcon} onClick={() => customer.editcustomer = false} title="Cancel" />
+                                                </span></td>
+                                        </tr>);
+                                    else return (
                                         <tr>
                                             
                                             <td>{customer.First_Name}</td>
@@ -67,9 +170,15 @@ function SchoolAdmin() {
                                             <td>{customer.Email}</td>
                                             <td>{customer.Phone}</td>
                                             <td>{customer.User_Type}</td>
-                                            <td>{''}</td>
-                                           
-                                        </tr>))}
+                                            
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={edit} onClick={() => editCustomerColumn(customer)} title="edit" />
+                                                    <img src={deleteIcon} onClick={() => deleteCustomer(customer.ID)} title="delete" />
+                                                </span>
+                                            </td>
+                                        </tr>)
+                                    })}
                                    
                                 </tbody>
                             </table>
@@ -92,7 +201,8 @@ function SchoolAdmin() {
                                         <th>Order ID</th>
                                         <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
                                             onClick={() => addEquipmentColumn()} src={add} height="13px"
-                                            width="13px" alt='add records' /></th>
+                                            width="13px" alt='add records' />
+                                        </th>
                                     </tr>
                                     {equipments.map(equipment => {
                                         if ((equipment.editEquipment || equipment.addEquipment))
