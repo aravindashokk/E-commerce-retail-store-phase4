@@ -55,4 +55,4 @@ function SideMenuBar () {
         </Router>
     )
 }
-export default SideMenuBar
+export default SideMenuBar;
