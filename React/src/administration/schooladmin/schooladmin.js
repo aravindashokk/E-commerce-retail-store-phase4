@@ -21,6 +21,7 @@ function SchoolAdmin() {
     updateCustomerTable();
     updateBusinessTable();
     updatePostsTable();
+    updateClubsTable();
     }, []);
 
 
@@ -81,6 +82,25 @@ function SchoolAdmin() {
         });
     }
 
+    function deleteClubs(elementId) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/clubs.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'deleteClubs', Data: { club_ID: elementId } }
+        }).then(result => {
+            
+            clubs.splice(clubs.findIndex(club => club.club_ID === elementId), 1)
+            
+            setPost(clubs);
+            console.log(clubs)
+            updatePostsTable();
+        }).catch(error => {
+        });
+    }
+
     function updateCustomerTable() {
         axios({
             method: 'post',
@@ -129,6 +149,22 @@ function SchoolAdmin() {
         });
     }
 
+    function updateClubsTable() {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/clubs.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: 'getAllClubs',Data:{} }
+        }).then(result => {
+            console.log(result.data);
+            setClub(result.data);
+            
+        }).catch(error => {
+        });
+    }
+
     function editCustomerColumn(customer) {
         customers.map(customer => {
             if (customer.addcustomer) {
@@ -160,9 +196,21 @@ function SchoolAdmin() {
             }
         });
         post.editpost = true;
-        let index = posts.findIndex(cus => cus.ID === post.ID);
+        let index = posts.findIndex(cus => cus.post_ID === post.post_ID);
         posts[index] = post;
         setPost([...posts]);
+    }
+
+    function editClubsColumn(club) {
+        clubs.map(club => {
+            if (club.addclubs) {
+                club.addclubs = false;
+            }
+        });
+        club.editclubs = true;
+        let index = clubs.findIndex(cus => cus.club_ID === club.club_ID);
+        clubs[index] = club;
+        setClub([...clubs]);
     }
 
     function addCustomerColumn() {
@@ -217,6 +265,23 @@ function SchoolAdmin() {
         setPost([...posts]);
     }
 
+    function addClubColumn() {
+        if (clubs.find(club => club.addclubs)) {
+            return;
+        }
+        let club = {
+            club_ID: (9433 || (Number(clubs[clubs.length - 1].ID) + 1)).toString(),
+            club_name:'',
+            club_email:'',
+            school_Id:'',
+            club_description:'',
+            addclubs: true,
+            
+        }
+        clubs.push(club);
+        setClub([...clubs]);
+    }
+
     function addOrEditCustomer(customer) {
         axios({
             method: 'post',
@@ -268,6 +333,23 @@ function SchoolAdmin() {
         });
     }
 
+    function addOrEditclubs(club) {
+        axios({
+            method: 'post',
+            url: 'http://localhost/wdm_phase4/React/src/api' + '/clubs.php',
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: { Function: (club.editclubs ? 'alterRecords' : 'addNewClub'), Data: club }
+        }).then(result => {
+            club.editclubs = false;
+            club.addclubs = false;
+            setClub(clubs);
+            updateClubsTable();
+        }).catch(error => {
+        });
+    }
+
     function handleCusChange(event, customer) {
         const { name, value } = event.target;
         customers.forEach((cus) => {
@@ -296,6 +378,16 @@ function SchoolAdmin() {
             }
         });
         setPost([...posts]);
+    }
+
+    function handleCluChange(event, club) {
+        const { name, value } = event.target;
+        clubs.forEach((cus) => {
+            if (cus.club_ID === club.club_ID) {
+                cus[name] = value;
+            }
+        });
+        setClub([...clubs]);
     }
 
     
@@ -335,10 +427,10 @@ function SchoolAdmin() {
                                     {customers.map(customer => {
                                         if ((customer.editcustomer || customer.addcustomer))
                                         return (<tr>
-                                            <td><input type="text" id="First_Name" name="First_Name" className="font-roboto" placeholder="First Name" value={customer.First_Name} onChange={(event) => handleCusChange(event, customer)}  /></td>
-                                            <td><input type="text" id="Last_Name" name="Last_Name" className="font-roboto" placeholder="Last Name" value={customer.Last_Name} onChange={(event) => handleCusChange(event, customer)}  /></td>
-                                            <td><input type="text" id="Email" className="font-roboto" name="Email" placeholder="Email" value={customer.Email} onChange={(event) => handleCusChange(event, customer)}  /></td>
-                                            <td><input type="text" id="Phone" className="font-roboto" name="Phone" placeholder="Phone" value={customer.Phone} onChange={(event) => handleCusChange(event, customer)}  /></td>
+                                            <td><input type="text" id="First_Name" name="First_Name" className="font-roboto" placeholder="First Name" value={customer.First_Name} onChange={(event) => handleCluChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Last_Name" name="Last_Name" className="font-roboto" placeholder="Last Name" value={customer.Last_Name} onChange={(event) => handleCluChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Email" className="font-roboto" name="Email" placeholder="Email" value={customer.Email} onChange={(event) => handleCluChange(event, customer)}  /></td>
+                                            <td><input type="text" id="Phone" className="font-roboto" name="Phone" placeholder="Phone" value={customer.Phone} onChange={(event) => handleCluChange(event, customer)}  /></td>
                                             <td><input type="text" id="User_Type" className="font-roboto" name="User_Type" placeholder="User_Type " value='Student'  /></td>
                                             <td>
                                                 <span className="action-icons">
@@ -476,26 +568,59 @@ function SchoolAdmin() {
                         </div>
                     </div>
 
-                    {/* Manage tasks table  */}
-                    {/* <div className="d-flex flex-direction-column align-items-start section-content"><span
-                        className="font-oswald section-header">Manage Tasks</span>
+                    {/* Manage clubs table  */}
+                    <div className="d-flex flex-direction-column align-items-start section-content"><span
+                        className="font-oswald section-header">Manage Clubs </span>
                         <div className="table-container">
-                            <table id="tasks-table" className="material-table">
+                        <table id="clubs-table" className="material-table">
                                 <tbody>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Assigned to</th>
-                                        <th>Desc</th>
-                                        <th>Services</th>
+                                        <th>Club_ID</th>
+                                        <th>Club_Name</th>
+                                        <th>Club_Email</th>
+                                        <th>School_ID</th>
+                                        <th>Club_Description</th>
                                         <th className="text-align-center"><img className="cursor-pointer" title="Add Record"
-                                            src={add} height="13px"
-                                            width="13px" alt='add-record' /></th>
+                                            onClick={() => addClubColumn()} src={add} height="13px"
+                                            width="13px" alt='add records' /></th>
                                     </tr>
+
+                                    {clubs.map(club => {
+                                        if ((club.editclubs || club.addclubs))
+                                        return (<tr>
+                                            <td><input type="text" id="club_ID" name="club_ID" className="font-roboto" placeholder="club ID" value={club.club_ID} onChange={(event) => handleCluChange(event, club)}  /></td>
+                                            <td><input type="text" id="club_name" name="club_name" className="font-roboto" placeholder="club name" value={club.club_name} onChange={(event) => handleCluChange(event, club)}  /></td>
+                                            <td><input type="text" id="club_email" className="font-roboto" name="club_email" placeholder="club_email" value={club.club_email} onChange={(event) => handleCluChange(event, club)}  /></td>
+                                            <td><input type="text" id="school_Id" className="font-roboto" name="school_Id" placeholder="school_Id" value={club.school_Id} onChange={(event) => handleCluChange(event, club)}  /></td>
+                                            <td><input type="text" id="club_description" className="font-roboto" name="club_description" placeholder="description" value={club.club_description} onChange={(event) => handleCluChange(event, club)}  /></td>
+
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={confirmIcon} onClick={() => addOrEditclubs(club)} title="Confirm" />
+                                                    <img src={discardIcon} onClick={() => club.editclubs = false} title="Cancel" />
+                                                </span></td>
+                                        </tr>);
+                                    else return (
+                                        <tr>
+                                            <td>{club.club_ID}</td>
+                                            <td>{club.club_name}</td>
+                                            <td>{club.club_email}</td>
+                                            <td>{club.school_Id}</td>
+                                            <td>{club.club_description}</td>
+                                            
+                                            <td>
+                                                <span className="action-icons">
+                                                    <img src={edit} onClick={() => editClubsColumn(club)} title="edit" />
+                                                    <img src={deleteIcon} onClick={() => deleteClubs(club.club_ID)} title="delete" />
+                                                </span>
+                                            </td>
+                                        </tr>)
+                                    })}
+                                   
                                 </tbody>
                             </table>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
 
                 {/* Horizontal row section containing multiple tables  */}
